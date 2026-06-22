@@ -1,15 +1,22 @@
 import { StatusBar } from "expo-status-bar";
 import { useCallback, useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import HotspotList from "./src/components/HotspotList";
-import { EmptyState, ErrorState, LoadingState } from "./src/components/ScreenState";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import HotspotsListScreen from "./src/screens/HotspotsListScreen";
+import MapScreen from "./src/screens/MapScreen";
 import { fetchHotspots } from "./src/services/hotspotsApi";
+import { getCurrentUserLocation } from "./src/services/locationService";
+
+const Stack = createStackNavigator();
 
 export default function App() {
   const [hotspots, setHotspots] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
+  const [userLocation, setUserLocation] = useState(null);
+  const [isGettingLocation, setIsGettingLocation] = useState(true);
+  const [locationErrorMessage, setLocationErrorMessage] = useState("");
 
   const loadHotspots = useCallback(async () => {
     setIsLoading(true);
@@ -25,51 +32,77 @@ export default function App() {
     }
   }, []);
 
+  const loadUserLocation = useCallback(async () => {
+    setIsGettingLocation(true);
+    setLocationErrorMessage("");
+
+    try {
+      const currentLocation = await getCurrentUserLocation();
+      setUserLocation(currentLocation);
+    } catch (error) {
+      setLocationErrorMessage(error.message ?? "Kon huidige locatie niet ophalen.");
+    } finally {
+      setIsGettingLocation(false);
+    }
+  }, []);
+
   useEffect(() => {
     loadHotspots();
   }, [loadHotspots]);
 
+  useEffect(() => {
+    loadUserLocation();
+  }, [loadUserLocation]);
+
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaProvider>
       <StatusBar style="dark" />
-      <View style={styles.container}>
-        <Text style={styles.title}>Hotspots in Nederland</Text>
-        <Text style={styles.subtitle}>Shooting locaties uit een online JSON-bron (Overpass API)</Text>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="Lijst"
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: "#eef4f9",
+            },
+            headerTintColor: "#0f2f4d",
+            headerTitleStyle: {
+              fontWeight: "700",
+            },
+            cardStyle: {
+              backgroundColor: "#eef4f9",
+            },
+          }}
+        >
+          <Stack.Screen name="Lijst" options={{ title: "Hotspots" }}>
+            {(screenProps) => (
+              <HotspotsListScreen
+                {...screenProps}
+                hotspots={hotspots}
+                isLoading={isLoading}
+                errorMessage={errorMessage}
+                onRetry={loadHotspots}
+                isGettingLocation={isGettingLocation}
+                locationErrorMessage={locationErrorMessage}
+              />
+            )}
+          </Stack.Screen>
 
-        {isLoading ? <LoadingState /> : null}
-
-        {!isLoading && errorMessage ? (
-          <ErrorState message={errorMessage} onRetry={loadHotspots} />
-        ) : null}
-
-        {!isLoading && !errorMessage && hotspots.length === 0 ? <EmptyState /> : null}
-
-        {!isLoading && !errorMessage && hotspots.length > 0 ? (
-          <HotspotList hotspots={hotspots} />
-        ) : null}
-      </View>
-    </SafeAreaView>
+          <Stack.Screen name="Kaart" options={{ title: "Kaart" }}>
+            {(screenProps) => (
+              <MapScreen
+                {...screenProps}
+                hotspots={hotspots}
+                userLocation={userLocation}
+                isLoading={isLoading}
+                errorMessage={errorMessage}
+                onRetry={loadHotspots}
+                isGettingLocation={isGettingLocation}
+                locationErrorMessage={locationErrorMessage}
+              />
+            )}
+          </Stack.Screen>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: "#eef4f9",
-  },
-  container: {
-    flex: 1,
-    paddingHorizontal: 16,
-    paddingTop: 12,
-    gap: 12,
-  },
-  title: {
-    fontSize: 26,
-    fontWeight: "800",
-    color: "#0f2f4d",
-  },
-  subtitle: {
-    fontSize: 14,
-    color: "#40556b",
-  },
-});

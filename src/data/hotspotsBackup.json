@@ -1,0 +1,2571 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-04-06T15:25:31Z",
+    "timestamp_areas_base": "2026-04-06T04:18:52Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 331551234,
+  "lat": 51.7064322,
+  "lon": 5.9387278,
+  "tags": {
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 450625937,
+  "lat": 51.1427833,
+  "lon": 5.8996180,
+  "tags": {
+    "name": "Schutterij Andreas",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 884168687,
+  "lat": 52.8075058,
+  "lon": 4.8940861,
+  "tags": {
+    "addr:city": "Wieringerwaard",
+    "addr:housename": "22",
+    "addr:postcode": "1766EC",
+    "addr:street": "Waardpolderhoofdweg",
+    "leisure": "pitch",
+    "name": "Eendracht Adventures",
+    "sport": "shooting",
+    "type": "paintball",
+    "website": "https://www.eendracht-adventures.nl/"
+  }
+},
+{
+  "type": "node",
+  "id": 1271639239,
+  "lat": 53.1970461,
+  "lon": 6.5891933,
+  "tags": {
+    "leisure": "sports_centre",
+    "name": "Schietsportvereniging Rabenhaupt",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 1363546981,
+  "lat": 51.5433142,
+  "lon": 5.9338011,
+  "tags": {
+    "name": "Schutterij t Zandakker Gilde St. Jan",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 1365651291,
+  "lat": 51.4425056,
+  "lon": 6.0769532,
+  "tags": {
+    "addr:city": "Horst",
+    "addr:country": "NL",
+    "addr:housenumber": "98",
+    "addr:postcode": "5962JD",
+    "addr:street": "Venloseweg",
+    "name": "Schutterij St. Lucia Horst",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 2636306208,
+  "lat": 52.1475231,
+  "lon": 5.5700288,
+  "tags": {
+    "addr:city": "Barneveld",
+    "addr:housenumber": "113",
+    "addr:postcode": "3771ED",
+    "addr:street": "Thorbeckelaan",
+    "club": "sport",
+    "name": "Schietvereniging De Eendracht",
+    "source": "BAG",
+    "source:date": "2014-01-22",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 2683582430,
+  "lat": 52.2206931,
+  "lon": 5.9996103,
+  "tags": {
+    "addr:city": "Apeldoorn",
+    "addr:housenumber": "399",
+    "addr:postcode": "7323AW",
+    "addr:street": "Laan van Zevenhuizen",
+    "amenity": "community_centre",
+    "club": "sport",
+    "community_centre": "club_home",
+    "name": "Schuttershof",
+    "opening_hours": "Mo 19:15-22:00; Th 19:15-22:00; Fr 18:30-22:00",
+    "source": "BAG;survey",
+    "source:date": "2014-02-11",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 2684746955,
+  "lat": 52.1661913,
+  "lon": 5.3486357,
+  "tags": {
+    "addr:city": "Amersfoort",
+    "addr:housenumber": "5",
+    "addr:postcode": "3812RZ",
+    "addr:street": "Kryptonweg",
+    "email": "bestuur@asvprinshendrik.nl",
+    "leisure": "pitch",
+    "name": "Amersfoortse Schietsportvereniging Prins Hendrik",
+    "phone": "+31 33 880 1444",
+    "source": "BAG",
+    "source:date": "2014-02-11",
+    "sport": "shooting",
+    "website": "https://asvprinshendrik.nl/"
+  }
+},
+{
+  "type": "node",
+  "id": 2711766897,
+  "lat": 52.1567145,
+  "lon": 6.6561528,
+  "tags": {
+    "addr:city": "Rietmolen",
+    "addr:country": "NL",
+    "addr:housenumber": "1",
+    "addr:postcode": "7165BB",
+    "addr:street": "Teesselinkweg",
+    "leisure": "pitch",
+    "name": "Schietportcentrum 't Weideke",
+    "source": "BAG",
+    "source:date": "2014-03-24",
+    "sport": "shooting",
+    "website": "https://www.hetweideke.nl"
+  }
+},
+{
+  "type": "node",
+  "id": 2714693695,
+  "lat": 52.3698590,
+  "lon": 4.6377222,
+  "tags": {
+    "addr:city": "Haarlem",
+    "addr:housenumber": "95",
+    "addr:postcode": "2034JA",
+    "addr:street": "Noord Schalkwijkerweg",
+    "leisure": "sports_centre",
+    "name": "Generaal van Merlen",
+    "source": "BAG",
+    "source:date": "2014-02-11",
+    "sport": "shooting",
+    "website": "http://www.generaalvanmerlen.nl/"
+  }
+},
+{
+  "type": "node",
+  "id": 2730792995,
+  "lat": 51.9324470,
+  "lon": 4.8663306,
+  "tags": {
+    "addr:city": "Nieuwpoort",
+    "addr:housenumber": "5",
+    "addr:postcode": "2965BC",
+    "addr:street": "Singel",
+    "leisure": "sports_centre",
+    "name": "Schietvereniging De Lekschutters",
+    "source": "BAG",
+    "source:date": "2014-02-11",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 2752893329,
+  "lat": 51.6109458,
+  "lon": 6.0013504,
+  "tags": {
+    "addr:city": "Groeningen",
+    "addr:housenumber": "17",
+    "addr:postcode": "5826AM",
+    "addr:street": "Maasstraat",
+    "name": "Schutterij",
+    "source": "BAG",
+    "source:date": "2014-03-24",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 2755597075,
+  "lat": 52.2356996,
+  "lon": 6.2760001,
+  "tags": {
+    "addr:city": "Bathmen",
+    "addr:housenumber": "3B",
+    "addr:postcode": "7437PB",
+    "addr:street": "Paddensteeg",
+    "amenity": "community_centre",
+    "club": "sport",
+    "community_centre": "club_home",
+    "name": "Vooruit Zij Ons Doel",
+    "opening_hours": "Sa 14:30-16:00; Su 10:30-12:00; We 19:30-21:00",
+    "short_name": "VZOD",
+    "source": "BAG",
+    "source:date": "2014-03-24",
+    "sport": "shooting",
+    "website": "https://www.vzodbathmen.nl"
+  }
+},
+{
+  "type": "node",
+  "id": 2756947419,
+  "lat": 51.9728237,
+  "lon": 4.1388161,
+  "tags": {
+    "access": "permit",
+    "addr:city": "Hoek van Holland",
+    "addr:housenumber": "45",
+    "addr:postcode": "3151AE",
+    "addr:street": "Prins Hendrikstraat",
+    "indoor": "yes",
+    "leisure": "pitch",
+    "name": "Schietvereniging Immer Vaardig",
+    "source": "BAG",
+    "source:date": "2014-03-24",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 2766935200,
+  "lat": 51.5789495,
+  "lon": 4.5312406,
+  "tags": {
+    "addr:city": "Oudenbosch",
+    "addr:housenumber": "1b",
+    "addr:postcode": "4731VG",
+    "addr:street": "Albanoweg",
+    "amenity": "community_centre",
+    "club": "sport",
+    "community_centre": "club_home",
+    "name": "Kruisboogvereniging Strijd in Vrede",
+    "source": "BAG",
+    "source:date": "2014-03-24",
+    "sport": "shooting",
+    "website": "https://kruisboogstrijdinvrede.nl"
+  }
+},
+{
+  "type": "node",
+  "id": 2767893752,
+  "lat": 52.0924144,
+  "lon": 5.6191152,
+  "tags": {
+    "addr:city": "Lunteren",
+    "addr:housenumber": "25",
+    "addr:postcode": "6741ZA",
+    "addr:street": "Kees de Koninglaan",
+    "club": "sport",
+    "name": "Tyr",
+    "source": "BAG",
+    "source:date": "2014-03-24",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 2772733122,
+  "lat": 51.9226251,
+  "lon": 4.2726288,
+  "tags": {
+    "addr:city": "Maassluis",
+    "addr:housenumber": "12",
+    "addr:postcode": "3141XN",
+    "addr:street": "Sportlaan",
+    "leisure": "sports_centre",
+    "name": "Schietsportvereniging Prins Hendrik",
+    "source": "BAG",
+    "source:date": "2014-03-24",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 2773280580,
+  "lat": 52.6700904,
+  "lon": 5.0531836,
+  "tags": {
+    "addr:city": "Zwaag",
+    "addr:housenumber": "100B",
+    "addr:postcode": "1689LE",
+    "addr:street": "Kerketuin",
+    "club": "sport",
+    "name": "Handboogvereniging De Coenschutters",
+    "phone": "+31 229 248 496",
+    "source": "BAG",
+    "source:date": "2014-03-24",
+    "sport": "shooting",
+    "website": "https://www.coenschutters.nl/"
+  }
+},
+{
+  "type": "node",
+  "id": 2773765196,
+  "lat": 52.6658382,
+  "lon": 5.0356861,
+  "tags": {
+    "addr:city": "Zwaag",
+    "addr:housenumber": "5",
+    "addr:postcode": "1689VP",
+    "addr:street": "Leekerpad",
+    "leisure": "sports_centre",
+    "name": "SV de Vrijheid Hoorn",
+    "source": "BAG",
+    "source:date": "2014-03-24",
+    "sport": "shooting",
+    "website": "https://www.svdevrijheidhoorn.nl/index.php"
+  }
+},
+{
+  "type": "node",
+  "id": 2775636937,
+  "lat": 52.0281088,
+  "lon": 5.5405263,
+  "tags": {
+    "addr:city": "Veenendaal",
+    "addr:housenumber": "1",
+    "addr:postcode": "3905AE",
+    "addr:street": "Verlengde Sportlaan",
+    "check_date": "2025-08-28",
+    "club": "sport",
+    "name": "Schietsportvereniging Prins Hendrik",
+    "source": "BAG",
+    "source:date": "2014-03-24",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 2781761450,
+  "lat": 52.5963254,
+  "lon": 4.6865662,
+  "tags": {
+    "addr:city": "Heiloo",
+    "addr:housenumber": "44",
+    "addr:postcode": "1852JC",
+    "addr:street": "Het Zevenhuizen",
+    "leisure": "sports_centre",
+    "name": "De Vrijheid Heiloo",
+    "source": "BAG",
+    "source:date": "2014-03-24",
+    "sport": "shooting",
+    "website": "https://beta1.svdevrijheidheiloo.nl"
+  }
+},
+{
+  "type": "node",
+  "id": 2796894545,
+  "lat": 51.6878272,
+  "lon": 5.9892217,
+  "tags": {
+    "addr:city": "Gennep",
+    "addr:housenumber": "6",
+    "addr:postcode": "6591XX",
+    "addr:street": "Langeweg",
+    "name": "Stichting Exploitatie Schietsport Gennep",
+    "source": "BAG",
+    "source:date": "2014-03-24",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 2797842668,
+  "lat": 52.6789098,
+  "lon": 5.1384598,
+  "tags": {
+    "addr:city": "Westwoud",
+    "addr:housenumber": "5",
+    "addr:postcode": "1617KJ",
+    "addr:street": "Stationsweg",
+    "leisure": "sports_centre",
+    "name": "Schietsportvereniging Drechterland",
+    "opening_hours": "We 19:00-23:00; Th 20:00-23:00; Fr 19:00-23:00",
+    "phone": "+31 228 563 551",
+    "source": "BAG",
+    "source:date": "2014-03-24",
+    "sport": "shooting",
+    "website": "https://svdrechterland.nl/"
+  }
+},
+{
+  "type": "node",
+  "id": 2808950718,
+  "lat": 52.3835533,
+  "lon": 4.8636691,
+  "tags": {
+    "addr:city": "Amsterdam",
+    "addr:housenumber": "9C",
+    "addr:postcode": "1051LM",
+    "addr:street": "Vredenhofweg",
+    "email": "info@sv-westerpark.nl",
+    "leisure": "sports_centre",
+    "name": "Schietsportcentrum Westerpark",
+    "opening_hours": "Mo closed; Tu closed; We 13:00-17:00,19:00-23:00; Th closed; Fr 13:00-17:00,19:00-23:00; Sa 13:00-17:00; Su 12:00-17:00",
+    "phone": "+31 6 22043123",
+    "source": "BAG",
+    "source:date": "2014-03-24",
+    "sport": "shooting",
+    "website": "https://sv-westerpark.nl/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2823436050,
+  "lat": 51.5183172,
+  "lon": 3.5096542,
+  "tags": {
+    "addr:city": "Meliskerke",
+    "addr:housenumber": "16",
+    "addr:postcode": "4365ND",
+    "addr:street": "Rapenburgweg",
+    "email": "info@svmeliskerke.nl",
+    "leisure": "sports_centre",
+    "name": "Schietvereniging Meliskerke",
+    "shooting": "indoor_range",
+    "source": "BAG",
+    "source:date": "2014-03-24",
+    "sport": "shooting",
+    "website": "https://www.svmeliskerke.nl/"
+  }
+},
+{
+  "type": "node",
+  "id": 2829187615,
+  "lat": 52.3007720,
+  "lon": 6.8414555,
+  "tags": {
+    "addr:city": "Deurningen",
+    "addr:housenumber": "38-CLUB",
+    "addr:postcode": "7561AV",
+    "addr:street": "Pastoor Havinkstraat",
+    "club": "sport",
+    "name": "Schietvereniging Deurningen 1975",
+    "source": "BAG",
+    "source:date": "2014-03-24",
+    "sport": "shooting",
+    "website": "https://www.schietverenigingdeurningen.nl/"
+  }
+},
+{
+  "type": "node",
+  "id": 2829573075,
+  "lat": 51.3347763,
+  "lon": 5.5323635,
+  "tags": {
+    "addr:city": "Leende",
+    "addr:housenumber": "15",
+    "addr:postcode": "5595GK",
+    "addr:street": "Kapelstraat",
+    "club": "yes",
+    "email": "info@gildeleenderstrijp.nl",
+    "leisure": "sports_centre",
+    "name": "Gilde St. Jan",
+    "shooting": "rifle",
+    "source": "BAG",
+    "source:date": "2018-12-09",
+    "sport": "shooting",
+    "website": "https://gildeleenderstrijp.nl/"
+  }
+},
+{
+  "type": "node",
+  "id": 2830079975,
+  "lat": 52.0730457,
+  "lon": 4.8571803,
+  "tags": {
+    "addr:city": "Woerden",
+    "addr:housenumber": "82",
+    "addr:postcode": "3448ZM",
+    "addr:street": "Parklaan",
+    "club": "sport",
+    "name": "S.S.V. Robin Hood",
+    "source": "BAG",
+    "source:date": "2014-03-24",
+    "sport": "shooting",
+    "website": "https://ssvrobinhood.nl/"
+  }
+},
+{
+  "type": "node",
+  "id": 2846182472,
+  "lat": 51.8326109,
+  "lon": 4.7089466,
+  "tags": {
+    "access": "private",
+    "addr:city": "Papendrecht",
+    "addr:housenumber": "7A",
+    "addr:postcode": "3356LM",
+    "addr:street": "Parkweg",
+    "email": "info@vrijheidpapendrecht.nl",
+    "leisure": "pitch",
+    "membership": "required",
+    "name": "SV De Vrijheid",
+    "phone": "+31 78 645 9921",
+    "shooting": "indoor_range",
+    "source": "BAG",
+    "source:date": "2014-05-07",
+    "sport": "shooting",
+    "website": "https://www.vrijheidpapendrecht.nl/"
+  }
+},
+{
+  "type": "node",
+  "id": 2846594046,
+  "lat": 52.3612710,
+  "lon": 6.4863388,
+  "tags": {
+    "addr:city": "Nijverdal",
+    "addr:housenumber": "1",
+    "addr:postcode": "7442BV",
+    "addr:street": "Tweede Kampsweg",
+    "amenity": "community_centre",
+    "club": "sport",
+    "community_centre": "club_home",
+    "long_name": "Luchtbuks Schiet Vereniging Nijverdal",
+    "name": "LSVN",
+    "source": "BAG",
+    "source:date": "2014-05-07",
+    "sport": "shooting",
+    "website": "https://lsvn.nl/"
+  }
+},
+{
+  "type": "node",
+  "id": 2846608497,
+  "lat": 52.3615008,
+  "lon": 6.4616119,
+  "tags": {
+    "addr:city": "Nijverdal",
+    "addr:housenumber": "28",
+    "addr:postcode": "7442LB",
+    "addr:street": "Dahliastraat",
+    "amenity": "community_centre",
+    "club": "sport",
+    "community_centre": "club_home",
+    "long_name": "SV Willem Tell Nijverdal",
+    "name": "Willem Tell",
+    "name:prefix": "Schietvereniging",
+    "source": "BAG",
+    "source:date": "2019-10-06",
+    "sport": "shooting",
+    "website": "https://svwillemtell-nijverdal.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 2855930377,
+  "lat": 52.3434242,
+  "lon": 5.6282059,
+  "tags": {
+    "addr:city": "Harderwijk",
+    "addr:housenumber": "1",
+    "addr:postcode": "3842AD",
+    "addr:street": "Parkweg",
+    "club": "sport",
+    "name": "Willem Tell",
+    "source": "BAG",
+    "source:date": "2014-05-07",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 2856356596,
+  "lat": 52.2128002,
+  "lon": 4.4314462,
+  "tags": {
+    "addr:city": "Katwijk",
+    "addr:housenumber": "1",
+    "addr:postcode": "2221LB",
+    "addr:street": "Olympiaweg",
+    "amenity": "community_centre",
+    "club": "sport",
+    "community_centre": "club_home",
+    "name": "Schietsportvereniging Katwijk",
+    "source": "BAG",
+    "source:date": "2014-05-07",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 2862704535,
+  "lat": 51.8868490,
+  "lon": 5.9057621,
+  "tags": {
+    "addr:city": "Bemmel",
+    "addr:housenumber": "1e",
+    "addr:postcode": "6681CD",
+    "addr:street": "Sportlaan",
+    "email": "info@svopdekorrel.nl",
+    "leisure": "sports_centre",
+    "name": "SV Op de Korrel",
+    "opening_hours": "Tu,Fr 19:00-24:00",
+    "phone": "+31 481 464753",
+    "source": "BAG",
+    "source:date": "2014-05-07",
+    "sport": "shooting",
+    "website": "https://www.svopdekorrel.nl"
+  }
+},
+{
+  "type": "node",
+  "id": 2878605738,
+  "lat": 52.4946598,
+  "lon": 4.9487041,
+  "tags": {
+    "addr:city": "Purmerend",
+    "addr:housenumber": "11",
+    "addr:postcode": "1441PA",
+    "addr:street": "Jaagweg",
+    "club": "sport",
+    "email": "info@ssv-purmerend.nl",
+    "name": "SSV Purmerend",
+    "phone": "+31 6 28234050",
+    "source": "BAG",
+    "source:date": "2014-05-24",
+    "sport": "shooting",
+    "website": "https://www.ssvpurmerend.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 2880186538,
+  "lat": 51.5666842,
+  "lon": 6.0236701,
+  "tags": {
+    "name": "Schutterij",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 2893252964,
+  "lat": 52.4555096,
+  "lon": 4.8295233,
+  "tags": {
+    "addr:city": "Zaandam",
+    "addr:housenumber": "2",
+    "addr:postcode": "1508DZ",
+    "addr:street": "Sportlaan",
+    "leisure": "sports_centre",
+    "name": "SSV Zaanstad",
+    "source": "BAG",
+    "source:date": "2014-06-01",
+    "sport": "shooting",
+    "website": "https://ssvzaanstad.nl/"
+  }
+},
+{
+  "type": "node",
+  "id": 2910447553,
+  "lat": 52.2592976,
+  "lon": 4.4935449,
+  "tags": {
+    "addr:city": "Noordwijkerhout",
+    "addr:housenumber": "4",
+    "addr:postcode": "2211HZ",
+    "addr:street": "Dijkzicht",
+    "amenity": "community_centre",
+    "club": "sport",
+    "community_centre": "club_home",
+    "name": "SV De Duinschutters",
+    "source": "BAG",
+    "source:date": "2014-06-11",
+    "sport": "shooting",
+    "website": "https://duinschutters.nl"
+  }
+},
+{
+  "type": "node",
+  "id": 2924839674,
+  "lat": 53.1520909,
+  "lon": 7.0472336,
+  "tags": {
+    "addr:city": "Winschoten",
+    "addr:housenumber": "108",
+    "addr:postcode": "9675HH",
+    "addr:street": "Bovenburen",
+    "leisure": "sports_centre",
+    "name": "SV De Vrijheid",
+    "shooting": "indoor_range",
+    "source": "BAG",
+    "source:date": "2014-06-15",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 2939527794,
+  "lat": 52.1661865,
+  "lon": 4.5443955,
+  "tags": {
+    "leisure": "sports_centre",
+    "name": "Schietsportvereniging \"De Vrijheid Leiderdorp\"",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 2974877022,
+  "lat": 51.8794745,
+  "lon": 5.6126317,
+  "tags": {
+    "addr:city": "Druten",
+    "addr:housenumber": "8",
+    "addr:postcode": "6651KX",
+    "addr:street": "De Gelenberg",
+    "leisure": "sports_centre",
+    "name": "Schietsportvereniging De Korrel",
+    "source": "BAG",
+    "source:date": "2014-07-21",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 3017993109,
+  "lat": 51.9344589,
+  "lon": 5.6273995,
+  "tags": {
+    "addr:city": "Opheusden",
+    "addr:housenumber": "1",
+    "addr:postcode": "4043KE",
+    "addr:street": "Swaenenstate",
+    "leisure": "sports_centre",
+    "name": "Schietvereniging Paul KrÃ¼ger",
+    "source": "BAG",
+    "source:date": "2014-08-15",
+    "sport": "shooting",
+    "website": "https://www.svpaulkruger.nl/"
+  }
+},
+{
+  "type": "node",
+  "id": 3018519291,
+  "lat": 51.9102334,
+  "lon": 5.5426319,
+  "tags": {
+    "addr:city": "IJzendoorn",
+    "addr:housenumber": "104",
+    "addr:postcode": "4053HK",
+    "addr:street": "Keizerstraat",
+    "club": "sport",
+    "name": "\"Le Cartouche\"",
+    "source": "BAG",
+    "source:date": "2014-08-15",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 3065114903,
+  "lat": 53.2091689,
+  "lon": 5.8280287,
+  "tags": {
+    "addr:city": "Leeuwarden",
+    "addr:housenumber": "73",
+    "addr:postcode": "8924JJ",
+    "addr:street": "Kalverdijkje",
+    "leisure": "sports_centre",
+    "name": "Indoor Schietbaan Leeuwarden",
+    "shooting": "indoor_range",
+    "source": "BAG",
+    "source:date": "2014-09-07",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 3089492478,
+  "lat": 51.7033435,
+  "lon": 5.8927914,
+  "tags": {
+    "note": "Schutterij",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 3170901108,
+  "lat": 52.0004099,
+  "lon": 6.4431664,
+  "tags": {
+    "name": "Kleiduivenschietterrein De Heide",
+    "shooting": "clay_pigeon",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 3337864611,
+  "lat": 51.5528153,
+  "lon": 6.0452746,
+  "tags": {
+    "leisure": "sports_centre",
+    "name": "Schietterrein de Schuts",
+    "sport": "shooting",
+    "website": "https://www.gildegeijsteren.nl/"
+  }
+},
+{
+  "type": "node",
+  "id": 3368850315,
+  "lat": 51.8545498,
+  "lon": 4.1403281,
+  "tags": {
+    "leisure": "pitch",
+    "name": "Schietvereniging Hellevoetsluis",
+    "sport": "shooting",
+    "website": "https://www.schietvereniginghellevoetsluis.nl/"
+  }
+},
+{
+  "type": "node",
+  "id": 3455946305,
+  "lat": 51.4526644,
+  "lon": 4.9087350,
+  "tags": {
+    "leisure": "pitch",
+    "name": "Schietvereniging Oranje",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 3729770599,
+  "lat": 52.3876385,
+  "lon": 6.5886221,
+  "tags": {
+    "addr:city": "Hoge Hexel",
+    "addr:housenumber": "1",
+    "addr:postcode": "7645AD",
+    "addr:street": "Haarboersweg",
+    "name": "Paintball Wierden",
+    "shooting": "paintball",
+    "source": "BAG",
+    "source:date": "2014-05-07",
+    "sport": "shooting",
+    "website": "https://www.paintballwierden.nl"
+  }
+},
+{
+  "type": "node",
+  "id": 4449166666,
+  "lat": 52.3220905,
+  "lon": 5.6125945,
+  "tags": {
+    "addr:city": "Harderwijk",
+    "addr:housenumber": "5",
+    "addr:postcode": "3845LJ",
+    "addr:street": "Kolbaanweg",
+    "leisure": "pitch",
+    "name": "Schietbioscoop van Seventer",
+    "shooting": "indoor_range",
+    "source": "BAG",
+    "source:date": "2016-10-15",
+    "sport": "shooting",
+    "website": "https://www.schietbioscoopvanseventer.nl/"
+  }
+},
+{
+  "type": "node",
+  "id": 4557358940,
+  "lat": 52.7208752,
+  "lon": 6.4856889,
+  "tags": {
+    "addr:city": "Hoogeveen",
+    "addr:housenumber": "152a",
+    "addr:postcode": "7906AD",
+    "addr:street": "Het Haagje",
+    "leisure": "sports_centre",
+    "name": "Schietsport Vereniging Lucas Aardenburg",
+    "shooting": "indoor_range",
+    "source": "BAG",
+    "source:date": "2014-03-24",
+    "sport": "shooting",
+    "website": "http://www.svlucasaardenburg.nl"
+  }
+},
+{
+  "type": "node",
+  "id": 5218534799,
+  "lat": 52.3879374,
+  "lon": 5.2227086,
+  "tags": {
+    "addr:city": "Almere",
+    "addr:housenumber": "48",
+    "addr:postcode": "1316RK",
+    "addr:street": "IJsselmeerweg",
+    "leisure": "sports_centre",
+    "level": "-1",
+    "name": "Schietsportvereniging De Flevoschutters",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 5647931641,
+  "lat": 51.9308960,
+  "lon": 6.0770120,
+  "tags": {
+    "leisure": "sports_centre",
+    "name": "St Andreas",
+    "sport": "shooting",
+    "website": "https://st-andreas-grieth.nl/"
+  }
+},
+{
+  "type": "node",
+  "id": 9386726326,
+  "lat": 53.0487846,
+  "lon": 4.7962604,
+  "tags": {
+    "name": "schietsportcentrum Odysseus",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 10992006064,
+  "lat": 52.3009813,
+  "lon": 6.9372641,
+  "tags": {
+    "leisure": "sports_centre",
+    "name": "SV Het Mikpunt",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "node",
+  "id": 11866364546,
+  "lat": 51.9833496,
+  "lon": 6.7072794,
+  "tags": {
+    "addr:city": "Winterswijk",
+    "addr:housenumber": "7",
+    "addr:postcode": "7103AV",
+    "addr:street": "Jaspersweg",
+    "club": "sport",
+    "name": "Schietbaan Jaspers",
+    "sport": "shooting",
+    "website": "http://schietbaanjaspers.nl/"
+  }
+},
+{
+  "type": "node",
+  "id": 13312117459,
+  "lat": 52.1341572,
+  "lon": 5.4965984,
+  "tags": {
+    "addr:city": "Achterveld",
+    "addr:housenumber": "214",
+    "addr:postcode": "3791PN",
+    "addr:street": "Hessenweg",
+    "alt_name": "S.V. Leusden",
+    "email": "secretariaat@svleusden.nl",
+    "leisure": "sports_centre",
+    "name": "Schietvereniging Leusden",
+    "operator": "Schietvereniging Leusden en Omstreken",
+    "phone": "+31 33 286 4520",
+    "sport": "shooting",
+    "website": "https://svleusden.nl"
+  }
+},
+{
+  "type": "node",
+  "id": 13706324665,
+  "lat": 51.6240947,
+  "lon": 4.9267878,
+  "tags": {
+    "addr:city": "Dongen",
+    "addr:housenumber": "5",
+    "addr:postcode": "5101TB",
+    "addr:street": "Heuvelstraat",
+    "email": "Bo@scope-shooting.nl",
+    "leisure": "pitch",
+    "name": "Scope Wapentraining",
+    "phone": "+31 627 83 73 79",
+    "sport": "shooting",
+    "website": "https://www.scope-shooting.nl/"
+  }
+},
+{
+  "type": "way",
+  "id": 55100786,
+  "center": {
+    "lat": 52.0526826,
+    "lon": 4.4503049
+  },
+  "nodes": [
+    693093936,
+    693093948,
+    693093950,
+    693093966,
+    693093936
+  ],
+  "tags": {
+    "leisure": "pitch",
+    "lit": "no",
+    "name": "H.K.S.Z.",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 84239423,
+  "center": {
+    "lat": 51.7991275,
+    "lon": 5.8805689
+  },
+  "nodes": [
+    707172291,
+    707173091,
+    979891985,
+    979891972,
+    707172291
+  ],
+  "tags": {
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 84239425,
+  "center": {
+    "lat": 51.7984123,
+    "lon": 5.8812446
+  },
+  "nodes": [
+    707168897,
+    707181549,
+    707188187,
+    707183225,
+    707168897
+  ],
+  "tags": {
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 89181236,
+  "center": {
+    "lat": 53.2941441,
+    "lon": 6.9441694
+  },
+  "nodes": [
+    1034621968,
+    1034622012,
+    1034622099,
+    1034622065,
+    1034622070,
+    13537030743,
+    1034621968
+  ],
+  "tags": {
+    "leisure": "pitch",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 180753178,
+  "center": {
+    "lat": 52.6799092,
+    "lon": 4.8388924
+  },
+  "nodes": [
+    1912183211,
+    1912183189,
+    1912183274,
+    665851755,
+    665851754,
+    1912183204,
+    1912183211
+  ],
+  "tags": {
+    "leisure": "pitch",
+    "smoking": "no",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 197784087,
+  "center": {
+    "lat": 50.7719686,
+    "lon": 5.7170923
+  },
+  "nodes": [
+    2079776829,
+    2079776827,
+    3651051320,
+    2079776828,
+    2079776829
+  ],
+  "tags": {
+    "leisure": "pitch",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 250688044,
+  "center": {
+    "lat": 52.1083034,
+    "lon": 4.3223750
+  },
+  "nodes": [
+    2570682590,
+    2570682563,
+    2570680754,
+    2570680769,
+    2570681725,
+    2570681734,
+    2570682424,
+    2570682423,
+    2570682590
+  ],
+  "tags": {
+    "building": "yes",
+    "leisure": "sports_centre",
+    "name": "KSD Marine / Jachthondenschool St. Hubertus",
+    "ref:bag": "0518100001637218",
+    "source": "BAG",
+    "source:date": "2013-09-01",
+    "sport": "shooting",
+    "start_date": "1980"
+  }
+},
+{
+  "type": "way",
+  "id": 250688329,
+  "center": {
+    "lat": 52.1108327,
+    "lon": 4.3207773
+  },
+  "nodes": [
+    2570706628,
+    2570704282,
+    2570704190,
+    13704363008,
+    13704363009,
+    2570704881,
+    2570705074,
+    2570706490,
+    2570706628
+  ],
+  "tags": {
+    "building": "yes",
+    "leisure": "sports_centre",
+    "name": "JST Waalsdorp",
+    "phone": "+31 70 324 1667",
+    "ref:bag": "0518100001637209",
+    "source": "BAG",
+    "source:date": "2013-09-01",
+    "sport": "shooting",
+    "start_date": "1970",
+    "website": "https://www.jst-waalsdorp.nl/"
+  }
+},
+{
+  "type": "way",
+  "id": 257915243,
+  "center": {
+    "lat": 52.0435571,
+    "lon": 6.3047353
+  },
+  "nodes": [
+    2633571170,
+    2633570982,
+    2633570974,
+    2633555578,
+    2633571049,
+    2633571062,
+    2633571064,
+    2633571156,
+    2633571170
+  ],
+  "tags": {
+    "addr:city": "Hengelo (Gld)",
+    "addr:housenumber": "3",
+    "addr:postcode": "7255KA",
+    "addr:street": "Elderinkweg",
+    "building": "yes",
+    "email": "secretaris@svwillemtell-hgld.nl",
+    "leisure": "sports_centre",
+    "name": "Schietvereniging Willem Tell",
+    "phone": "+31 575 461 944",
+    "ref:bag": "1876100000016720",
+    "shooting": "range",
+    "source": "BAG;survey",
+    "source:date": "2014-01-22",
+    "sport": "shooting",
+    "start_date": "1975",
+    "website": "https://www.svwillemtell-hgld.nl/"
+  }
+},
+{
+  "type": "way",
+  "id": 259843007,
+  "center": {
+    "lat": 52.1615215,
+    "lon": 6.2325749
+  },
+  "nodes": [
+    2652925182,
+    2652925434,
+    2652925432,
+    2652925308,
+    2652925305,
+    2652925285,
+    686418051,
+    2652925176,
+    2652925182
+  ],
+  "tags": {
+    "building": "yes",
+    "leisure": "pitch",
+    "ref:bag": "0262100000002819",
+    "source": "BAG",
+    "source:date": "2014-01-22",
+    "sport": "shooting",
+    "start_date": "1992"
+  }
+},
+{
+  "type": "way",
+  "id": 262524223,
+  "center": {
+    "lat": 52.1121171,
+    "lon": 6.5245812
+  },
+  "nodes": [
+    2681884682,
+    2681884617,
+    2681884647,
+    2681880669,
+    2681884682
+  ],
+  "tags": {
+    "addr:city": "Borculo",
+    "addr:housenumber": "3b",
+    "addr:postcode": "7271BV",
+    "addr:street": "Haarloseweg",
+    "building": "yes",
+    "club": "sport",
+    "contact:facebook": "https://www.facebook.com/Schietvereniging-Diabolo-307062039424309",
+    "name": "Schietvereniging Diabolo",
+    "ref:bag": "1859100000782799",
+    "source": "BAG",
+    "source:date": "2014-02-11",
+    "sport": "shooting",
+    "start_date": "1975",
+    "website": "http://www.schietbondgeb.nl/svDiabolo.php"
+  }
+},
+{
+  "type": "way",
+  "id": 265874494,
+  "center": {
+    "lat": 52.3970885,
+    "lon": 4.6249016
+  },
+  "nodes": [
+    2714842312,
+    2714842327,
+    2714842324,
+    2714842334,
+    2714842331,
+    2714841924,
+    2714842312
+  ],
+  "tags": {
+    "building": "yes",
+    "club": "sport",
+    "name": "Schietvereniging De Vrijheid",
+    "ref:bag": "0392100000045130",
+    "source": "BAG",
+    "source:date": "2014-02-11",
+    "sport": "shooting",
+    "start_date": "1982"
+  }
+},
+{
+  "type": "way",
+  "id": 267439284,
+  "center": {
+    "lat": 51.8803941,
+    "lon": 4.5979866
+  },
+  "nodes": [
+    2728957231,
+    2728956363,
+    2728956568,
+    2728957550,
+    2728957081,
+    2728956943,
+    2728957231
+  ],
+  "tags": {
+    "building": "yes",
+    "name": "Schietbaan Politiebureau Ridderkerk",
+    "ref:bag": "0597100000206816",
+    "source": "BAG",
+    "source:date": "2014-02-11",
+    "sport": "shooting",
+    "start_date": "1980"
+  }
+},
+{
+  "type": "way",
+  "id": 268992357,
+  "center": {
+    "lat": 52.0278663,
+    "lon": 4.1704359
+  },
+  "nodes": [
+    2742797710,
+    10995362563,
+    2742798088,
+    10995362562,
+    2742797761,
+    2742797917,
+    10995362561,
+    10995362560,
+    10995362559,
+    2742797146,
+    2742796926,
+    2742796878,
+    2742796872,
+    10995362558,
+    10995362557,
+    2742797554,
+    2742797473,
+    2742797710
+  ],
+  "tags": {
+    "building": "yes",
+    "club": "sport",
+    "leisure": "sports_centre",
+    "name": "Schietvereniging Monster",
+    "name:nl": "Schietvereniging Monster",
+    "ref:bag": "1783100000607938",
+    "source": "BAG",
+    "source:date": "2023-06-21",
+    "sport": "shooting",
+    "start_date": "2014",
+    "website": "https://www.svmonster.nl"
+  }
+},
+{
+  "type": "way",
+  "id": 273301594,
+  "center": {
+    "lat": 51.7536903,
+    "lon": 5.2708925
+  },
+  "nodes": [
+    2781714342,
+    2781714356,
+    2781714347,
+    2781714405,
+    2781714475,
+    2781714443,
+    2781714297,
+    2781714293,
+    2781714271,
+    2781714308,
+    2781714328,
+    2781714323,
+    2781714332,
+    2781714319,
+    2781714342
+  ],
+  "tags": {
+    "building": "yes",
+    "leisure": "sports_centre",
+    "name": "SVHedel",
+    "ref:bag": "0263100000009267",
+    "source": "BAG",
+    "source:date": "2014-03-24",
+    "sport": "shooting",
+    "start_date": "1992"
+  }
+},
+{
+  "type": "way",
+  "id": 274259780,
+  "center": {
+    "lat": 51.4551616,
+    "lon": 5.9984688
+  },
+  "nodes": [
+    5250773232,
+    2790235158,
+    2790235591,
+    5250773231,
+    2790235533,
+    2790235619,
+    2790235610,
+    2790235528,
+    2790235523,
+    2790235225,
+    2790235227,
+    2790235114,
+    5250773232
+  ],
+  "tags": {
+    "building": "yes",
+    "name": "Davy Crocket",
+    "ref:bag": "1507100000015362",
+    "source": "BAG",
+    "source:date": "2017-11-27",
+    "sport": "shooting",
+    "start_date": "1980",
+    "website": "https://www.davycrockett.nl"
+  }
+},
+{
+  "type": "way",
+  "id": 274370619,
+  "center": {
+    "lat": 51.4097809,
+    "lon": 6.0278639
+  },
+  "nodes": [
+    2791090600,
+    2791090440,
+    2791090243,
+    2791090254,
+    2791090222,
+    2791090306,
+    2791090332,
+    2791090387,
+    2791090600
+  ],
+  "tags": {
+    "building": "yes",
+    "name": "Schuttersgilde Sint Sebastianus",
+    "ref:bag": "1507100000023122",
+    "source": "BAG",
+    "source:date": "2014-03-24",
+    "sport": "shooting",
+    "start_date": "1970"
+  }
+},
+{
+  "type": "way",
+  "id": 274684794,
+  "center": {
+    "lat": 51.4219186,
+    "lon": 6.1307134
+  },
+  "nodes": [
+    2793661685,
+    2793661690,
+    2793661691,
+    6986835754,
+    2793661686,
+    2793661687,
+    2793661692,
+    2793661693,
+    2793661701,
+    2793661699,
+    2793661695,
+    2793661696,
+    2793661689,
+    2793661688,
+    2793661684,
+    2793661685
+  ],
+  "tags": {
+    "building": "yes",
+    "name": "Schuttershof St. Jan",
+    "ref:bag": "1507100000003241",
+    "source": "BAG",
+    "source:date": "2019-11-18",
+    "sport": "shooting",
+    "start_date": "1980",
+    "website": "https://www.schutterijstjan.nl/"
+  }
+},
+{
+  "type": "way",
+  "id": 278883833,
+  "center": {
+    "lat": 53.2933490,
+    "lon": 6.9422845
+  },
+  "nodes": [
+    2831742262,
+    2831742263,
+    2831742851,
+    2831742848,
+    2831742262
+  ],
+  "tags": {
+    "building": "yes",
+    "ref:bag": "0010100000019802",
+    "source": "BAG",
+    "source:date": "2014-03-24",
+    "sport": "shooting",
+    "start_date": "1980"
+  }
+},
+{
+  "type": "way",
+  "id": 281011574,
+  "center": {
+    "lat": 52.5399212,
+    "lon": 4.8404586
+  },
+  "nodes": [
+    2850338535,
+    2850338536,
+    2850338532,
+    2850338533,
+    2850338530,
+    2850340288,
+    2850340290,
+    2850338523,
+    2850338524,
+    2850338535
+  ],
+  "tags": {
+    "building": "bunker",
+    "leisure": "pitch",
+    "material": "masonry",
+    "ref:bag": "0370100000001736",
+    "shooting": "pistol",
+    "source": "BAG",
+    "source:date": "2014-05-07",
+    "sport": "shooting",
+    "start_date": "1941"
+  }
+},
+{
+  "type": "way",
+  "id": 283927911,
+  "center": {
+    "lat": 52.0585459,
+    "lon": 5.3033256
+  },
+  "nodes": [
+    2877355824,
+    2877355324,
+    2877355783,
+    2877354182,
+    2877354531,
+    2877353900,
+    2877353908,
+    2877353879,
+    2877353874,
+    2877349388,
+    2877336598,
+    2877357300,
+    2877356827,
+    2877356806,
+    2877356680,
+    2877356284,
+    2877356274,
+    2877355803,
+    2877355809,
+    2877355321,
+    2877355824
+  ],
+  "tags": {
+    "addr:city": "Driebergen-Rijsenburg",
+    "addr:housenumber": "41",
+    "addr:postcode": "3971JM",
+    "addr:street": "J. Manger Catslaan",
+    "building": "yes",
+    "club": "sport",
+    "name": "Schietvereniging Driebergen-Rijsenburg",
+    "phone": "+31 343 514 484",
+    "ref:bag": "1581100000041209",
+    "source": "BAG",
+    "source:date": "2019-10-15",
+    "sport": "shooting",
+    "start_date": "2012",
+    "website": "https://sv-driebergen.nl/"
+  }
+},
+{
+  "type": "way",
+  "id": 284972451,
+  "center": {
+    "lat": 51.5049684,
+    "lon": 3.8617788
+  },
+  "nodes": [
+    2886780635,
+    2886780624,
+    2886780667,
+    2886780672,
+    8622369514,
+    2886780635
+  ],
+  "tags": {
+    "building": "industrial",
+    "contact:email": "secretaris@svartemis.nl",
+    "contact:website": "https://www.svartemis.nl/",
+    "leisure": "pitch",
+    "name": "Schietsportvereniging Artemis",
+    "opening_hours": "Tu 19:00-22:30, Fr 19:00-23:00, Su 10:30-13:30; PH off",
+    "ref:bag": "0664100000021184",
+    "shooting": "indoor_range",
+    "source": "BAG",
+    "source:date": "2014-05-29",
+    "sport": "shooting",
+    "start_date": "1979"
+  }
+},
+{
+  "type": "way",
+  "id": 286026649,
+  "center": {
+    "lat": 52.2504614,
+    "lon": 5.5923376
+  },
+  "nodes": [
+    2896652450,
+    2896652449,
+    2896652448,
+    2896652445,
+    2896652404,
+    2896652312,
+    2896652381,
+    2896652432,
+    2896652438,
+    2896652451,
+    2896652450
+  ],
+  "tags": {
+    "building": "yes",
+    "name": "SSV Wilhelm Tell Putten",
+    "ref:bag": "0273100000001456",
+    "source": "BAG",
+    "source:date": "2019-10-23",
+    "sport": "shooting",
+    "start_date": "2001"
+  }
+},
+{
+  "type": "way",
+  "id": 291400787,
+  "center": {
+    "lat": 53.0921037,
+    "lon": 6.0909688
+  },
+  "nodes": [
+    2948643837,
+    2948643698,
+    2948643697,
+    2948643722,
+    2948642743,
+    2948642747,
+    2948642745,
+    2948642748,
+    2948642752,
+    2948642751,
+    2948642749,
+    2948642750,
+    2948642744,
+    2948642746,
+    2948643837
+  ],
+  "tags": {
+    "building": "yes",
+    "name": "Schietsportcentrum Drachten",
+    "ref:bag": "0090100000580908",
+    "shooting": "range",
+    "source": "BAG",
+    "source:date": "2014-07-04",
+    "sport": "shooting",
+    "start_date": "2004",
+    "url": "http://svdrachten.nl"
+  }
+},
+{
+  "type": "way",
+  "id": 314219282,
+  "center": {
+    "lat": 51.3718148,
+    "lon": 6.1365246
+  },
+  "nodes": [
+    979209534,
+    8162609902,
+    1318795442,
+    3202676197,
+    979192234,
+    979209534
+  ],
+  "tags": {
+    "leisure": "sports_centre",
+    "name": "Thomas van Aquino",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 429530576,
+  "center": {
+    "lat": 51.8634942,
+    "lon": 4.5428040
+  },
+  "nodes": [
+    4317021272,
+    4286814910,
+    4286814912,
+    4286814905,
+    4286814907,
+    4286814906,
+    4317021275,
+    4317021274,
+    4286814908,
+    4286814909,
+    4317021272
+  ],
+  "tags": {
+    "building": "yes",
+    "club": "sport",
+    "name": "svv De Vrijheid",
+    "ref:bag": "0489100000265074",
+    "source": "BAG",
+    "source:date": "2016-07-23",
+    "sport": "shooting",
+    "start_date": "2014"
+  }
+},
+{
+  "type": "way",
+  "id": 475122624,
+  "center": {
+    "lat": 51.8629419,
+    "lon": 4.5383623
+  },
+  "nodes": [
+    4689229298,
+    4689229299,
+    4689229300,
+    4689229301,
+    4689229302,
+    4689229303,
+    4689229304,
+    4689229305,
+    4689229306,
+    4689229307,
+    4689229340,
+    4689229341,
+    4689229308,
+    4689229309,
+    6321348834,
+    4689229310,
+    4689229311,
+    4689229312,
+    4689229313,
+    4689229314,
+    4689229253,
+    4689229298
+  ],
+  "tags": {
+    "leisure": "pitch",
+    "name": "svv De Vrijheid",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 499361005,
+  "center": {
+    "lat": 51.9614067,
+    "lon": 6.5590882
+  },
+  "nodes": [
+    4906424834,
+    4906424824,
+    4906424833,
+    4906424825,
+    4906424832,
+    4906424831,
+    4906424827,
+    4906424830,
+    4906424826,
+    4906424829,
+    4906424828,
+    4908694209,
+    4908694211,
+    4908694210,
+    4908706730,
+    4908706729,
+    4908706732,
+    4908706731,
+    4906424834
+  ],
+  "tags": {
+    "alt_name": "De Voskuil",
+    "leisure": "pitch",
+    "name": "Kleiduivenschietbaan Het Goor",
+    "shooting": "clay_pigeon",
+    "sport": "shooting",
+    "website": "https://www.voskuilaalten.nl/pagina/kleiduivenschietbaan.html"
+  }
+},
+{
+  "type": "way",
+  "id": 507967434,
+  "center": {
+    "lat": 51.6257914,
+    "lon": 5.6983672
+  },
+  "nodes": [
+    4973717652,
+    4973717651,
+    940690704,
+    940704828,
+    940671614,
+    940703316,
+    5568847856,
+    4973717652
+  ],
+  "tags": {
+    "landuse": "commercial",
+    "leisure": "sports_centre",
+    "name": "Paintball-Games Venhorst",
+    "shooting": "paintball",
+    "sport": "shooting",
+    "website": "https://www.paintball-games.nl/"
+  }
+},
+{
+  "type": "way",
+  "id": 612287993,
+  "center": {
+    "lat": 52.1116842,
+    "lon": 4.3216615
+  },
+  "nodes": [
+    2570715967,
+    2570714844,
+    5796037456,
+    5796037457,
+    2570715967
+  ],
+  "tags": {
+    "leisure": "pitch",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 612297827,
+  "center": {
+    "lat": 50.8939647,
+    "lon": 6.0380092
+  },
+  "nodes": [
+    5796133498,
+    5796133509,
+    5796133508,
+    5796133507,
+    5796133506,
+    5796133488,
+    5796133487,
+    5796133502,
+    5796133486,
+    5796133522,
+    5796133485,
+    5796133484,
+    5796133517,
+    5796133516,
+    5796133515,
+    5796133715,
+    5796133714,
+    5796133713,
+    5796133712,
+    5796133711,
+    5796133710,
+    5796133709,
+    5796133708,
+    5796133707,
+    5796133706,
+    5796133705,
+    5796133704,
+    5796133703,
+    5796133702,
+    5796133701,
+    5796133700,
+    5796133699,
+    5796133698,
+    5796133697,
+    5342061652,
+    5342061651,
+    940610881,
+    5342061650,
+    5342061649,
+    5342061665,
+    5489195839,
+    5489195838,
+    5489195837,
+    5489195836,
+    5489195841,
+    5489195840,
+    5796133543,
+    5796133542,
+    5796133541,
+    5796133540,
+    5796133883,
+    5796133882,
+    5796133742,
+    5796133743,
+    5796133744,
+    5796133745,
+    5796133746,
+    5796133747,
+    5796133748,
+    5796133749,
+    5796133750,
+    5796133751,
+    5796133752,
+    5796133853,
+    5796133854,
+    5796133855,
+    5796133856,
+    5796133857,
+    5796133858,
+    5796133859,
+    5796133860,
+    940668688,
+    5796133492,
+    5796133491,
+    5796133490,
+    5796133489,
+    5796133497,
+    5796133498
+  ],
+  "tags": {
+    "barrier": "fence",
+    "fence_type": "chain_link",
+    "leisure": "pitch",
+    "shooting": "airsoft",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 615020298,
+  "center": {
+    "lat": 52.2401406,
+    "lon": 5.9408158
+  },
+  "nodes": [
+    759102629,
+    9017818897,
+    9017818887,
+    5816652392,
+    759173666,
+    759086712,
+    759149128,
+    759126444,
+    759102629
+  ],
+  "tags": {
+    "leisure": "pitch",
+    "name": "Oude Schietbaan",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 703383008,
+  "center": {
+    "lat": 51.4785220,
+    "lon": 5.7631881
+  },
+  "nodes": [
+    6605417825,
+    6605417826,
+    6605417827,
+    6605417828,
+    6605417825
+  ],
+  "tags": {
+    "leisure": "pitch",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 723985156,
+  "center": {
+    "lat": 51.6713445,
+    "lon": 5.5821180
+  },
+  "nodes": [
+    6790059133,
+    6790059132,
+    6790059131,
+    6790059130,
+    6790059129,
+    6790059128,
+    6790059127,
+    6790059126,
+    6790059125,
+    6790059124,
+    6790059123,
+    6790059122,
+    6790059121,
+    6790059120,
+    6790059119,
+    6790059118,
+    6790059117,
+    6790021455,
+    6790021456,
+    6790059133
+  ],
+  "tags": {
+    "leisure": "pitch",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 819799601,
+  "center": {
+    "lat": 51.6662762,
+    "lon": 5.1298102
+  },
+  "nodes": [
+    7655802100,
+    7655798019,
+    7655798018,
+    7655798017,
+    7655798010,
+    7655798011,
+    7655802099,
+    7655802100
+  ],
+  "tags": {
+    "leisure": "pitch",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 866051724,
+  "center": {
+    "lat": 50.9915711,
+    "lon": 5.7614326
+  },
+  "nodes": [
+    8072300664,
+    8072300675,
+    8072300665,
+    8072300666,
+    8072300667,
+    8072300668,
+    8072300669,
+    8072300670,
+    8072300671,
+    8072300672,
+    8072300673,
+    8072300674,
+    8072300664
+  ],
+  "tags": {
+    "barrier": "fence",
+    "landuse": "recreation_ground",
+    "leisure": "pitch",
+    "name": "Schutterij Urmond",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 898585251,
+  "center": {
+    "lat": 51.6264338,
+    "lon": 5.6926686
+  },
+  "nodes": [
+    8350184690,
+    8350184689,
+    8350184688,
+    8350184687,
+    8350184686,
+    8350184685,
+    8350184690
+  ],
+  "tags": {
+    "leisure": "sports_centre",
+    "name": "Schietbaan Eric Swinkels",
+    "shooting": "Kleiduiven",
+    "sport": "shooting",
+    "website": "https://kleiduiven.com/"
+  }
+},
+{
+  "type": "way",
+  "id": 953852573,
+  "center": {
+    "lat": 51.2973470,
+    "lon": 6.0635413
+  },
+  "nodes": [
+    1273392883,
+    1273375810,
+    1273403323,
+    1273394921,
+    1273392883
+  ],
+  "tags": {
+    "leisure": "pitch",
+    "name": "Sint-Hubertus",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 972690224,
+  "center": {
+    "lat": 51.1303556,
+    "lon": 5.8561321
+  },
+  "nodes": [
+    9002480349,
+    9002480328,
+    9002480330,
+    9002480348,
+    9002480331,
+    9002480318,
+    9002480319,
+    9002480327,
+    9002480349
+  ],
+  "tags": {
+    "barrier": "fence",
+    "leisure": "pitch",
+    "lit": "no",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 977518384,
+  "center": {
+    "lat": 51.4217082,
+    "lon": 6.1307926
+  },
+  "nodes": [
+    978539652,
+    978549874,
+    4086934835,
+    9045055439,
+    978539652
+  ],
+  "tags": {
+    "name": "Schutterij St. Jan Grubbenvorst",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 987819392,
+  "center": {
+    "lat": 51.0067000,
+    "lon": 5.7685733
+  },
+  "nodes": [
+    9130615636,
+    9130615635,
+    9130615634,
+    9130615633,
+    9130615632,
+    9130615631,
+    9130615630,
+    9130615636
+  ],
+  "tags": {
+    "leisure": "pitch",
+    "name": "Sjeet wei",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 987934541,
+  "center": {
+    "lat": 51.0278629,
+    "lon": 5.7728237
+  },
+  "nodes": [
+    9131615194,
+    9131615189,
+    9131615193,
+    9131615192,
+    9131615188,
+    9131615191,
+    9131615190,
+    9131615194
+  ],
+  "tags": {
+    "leisure": "pitch",
+    "name": "Schutterij St. Willibrordus",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 988008126,
+  "center": {
+    "lat": 51.0579112,
+    "lon": 5.8057405
+  },
+  "nodes": [
+    9132182713,
+    9132182712,
+    9132182711,
+    9132182710,
+    9132182713
+  ],
+  "tags": {
+    "leisure": "pitch",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 988008138,
+  "center": {
+    "lat": 51.0468048,
+    "lon": 5.7821641
+  },
+  "nodes": [
+    9132197571,
+    9132197570,
+    9132197569,
+    9132197568,
+    9132197571
+  ],
+  "tags": {
+    "leisure": "pitch",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 1052859575,
+  "center": {
+    "lat": 51.3098303,
+    "lon": 6.1227600
+  },
+  "nodes": [
+    1273235383,
+    9675855944,
+    9675855943,
+    9675855946,
+    1273235383
+  ],
+  "tags": {
+    "leisure": "sports_centre",
+    "name": "SV De Grensstreek",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 1052859576,
+  "center": {
+    "lat": 51.3098916,
+    "lon": 6.1220765
+  },
+  "nodes": [
+    9675855951,
+    9675855950,
+    9675855949,
+    9675855948,
+    9675855947,
+    9675855943,
+    9675855946,
+    1273249640,
+    9675855945,
+    9675855951
+  ],
+  "tags": {
+    "leisure": "sports_centre",
+    "name": "SV De Flint",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 1075907604,
+  "center": {
+    "lat": 51.2818465,
+    "lon": 6.1160961
+  },
+  "nodes": [
+    1273438712,
+    1273447638,
+    1273434601,
+    1273437799,
+    1273438712
+  ],
+  "tags": {
+    "leisure": "sports_centre",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 1102167789,
+  "center": {
+    "lat": 51.8385947,
+    "lon": 5.7955105
+  },
+  "nodes": [
+    10084936686,
+    10084936685,
+    10084936684,
+    10084936683,
+    10084936686
+  ],
+  "tags": {
+    "leisure": "pitch",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 1153016008,
+  "center": {
+    "lat": 52.1392270,
+    "lon": 6.1796579
+  },
+  "nodes": [
+    736780229,
+    736788584,
+    10604082973,
+    10724151499,
+    10724151498,
+    736780229
+  ],
+  "tags": {
+    "email": "info@svdehoven.nl",
+    "leisure": "sports_centre",
+    "name": "SV De Hoven",
+    "phone": "+31 6 21603855",
+    "sport": "shooting",
+    "website": "https://www.svdehoven.nl/"
+  }
+},
+{
+  "type": "way",
+  "id": 1153482473,
+  "center": {
+    "lat": 52.0977126,
+    "lon": 5.1457334
+  },
+  "nodes": [
+    10727802681,
+    10727802679,
+    10727802678,
+    10727802677,
+    10727802676,
+    10727802680,
+    10727802683,
+    10727802682,
+    10727802681
+  ],
+  "tags": {
+    "leisure": "pitch",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 1153482474,
+  "center": {
+    "lat": 52.0975222,
+    "lon": 5.1471680
+  },
+  "nodes": [
+    10727802685,
+    10727802675,
+    10727802674,
+    10727802673,
+    10727802672,
+    10727802684,
+    10727802687,
+    10727802686,
+    10727802631,
+    10727802685
+  ],
+  "tags": {
+    "leisure": "pitch",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 1173129955,
+  "center": {
+    "lat": 51.1871430,
+    "lon": 5.7151469
+  },
+  "nodes": [
+    10900090855,
+    10900090852,
+    10900090853,
+    10900090854,
+    10900090855
+  ],
+  "tags": {
+    "archery": "popinjay",
+    "building": "yes",
+    "leisure": "pitch",
+    "name": "Schutterij St. Catharina",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 1174870452,
+  "center": {
+    "lat": 51.1865419,
+    "lon": 5.8174343
+  },
+  "nodes": [
+    10916828751,
+    10916828750,
+    1953370113,
+    1953370103,
+    10916828751
+  ],
+  "tags": {
+    "leisure": "pitch",
+    "name": "Schutterij St. Jacobus Hunsel",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 1278183774,
+  "center": {
+    "lat": 51.9836246,
+    "lon": 6.7071870
+  },
+  "nodes": [
+    11866364544,
+    11866364547,
+    2806093438,
+    2806093488,
+    2806092200,
+    2806093828,
+    2806092175,
+    2806088424,
+    2806093319,
+    2806093196,
+    2806093168,
+    11866364545,
+    11866364544
+  ],
+  "tags": {
+    "leisure": "pitch",
+    "operator": "Schietbaan Jaspers",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 1426252356,
+  "center": {
+    "lat": 51.4236562,
+    "lon": 5.4791526
+  },
+  "nodes": [
+    13110804354,
+    13110804355,
+    13110804356,
+    13110804357,
+    13110804354
+  ],
+  "tags": {
+    "leisure": "pitch",
+    "sport": "shooting"
+  }
+},
+{
+  "type": "way",
+  "id": 1489130886,
+  "center": {
+    "lat": 51.7624045,
+    "lon": 5.9023040
+  },
+  "nodes": [
+    13649868476,
+    13649868477,
+    13649868478,
+    13649868479,
+    13649868476
+  ],
+  "tags": {
+    "building": "yes",
+    "club": "sport",
+    "name": "Schuttersgilde St.Antonius Abt",
+    "sport": "shooting",
+    "website": "https://schuttersgildemook.nl/"
+  }
+},
+{
+  "type": "relation",
+  "id": 17456071,
+  "center": {
+    "lat": 52.3841175,
+    "lon": 6.5083680
+  },
+  "members": [
+    {
+      "type": "way",
+      "ref": 1256554793,
+      "role": "inner"
+    }
+  ],
+  "tags": {
+    "leisure": "pitch",
+    "sport": "shooting",
+    "type": "multipolygon"
+  }
+}
+
+  ]
+}
+

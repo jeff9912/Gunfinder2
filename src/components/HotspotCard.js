@@ -1,18 +1,25 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
-export default function HotspotCard({ hotspot }) {
+export default function HotspotCard({ hotspot, onPress }) {
+  const isInteractive = typeof onPress === "function";
+
   return (
-    <View style={styles.card}>
+    <Pressable
+      onPress={onPress}
+      disabled={!isInteractive}
+      style={({ pressed }) => [styles.card, isInteractive ? styles.cardInteractive : null, pressed ? styles.cardPressed : null]}
+    >
       <Text style={styles.name}>{hotspot.name}</Text>
       <Text style={styles.description}>{hotspot.description}</Text>
       <View style={styles.metaRow}>
         <Text style={styles.metaText}>Plaats: {hotspot.city}</Text>
         <Text style={styles.metaText}>Sport: {hotspot.sport}</Text>
       </View>
+      {isInteractive ? <Text style={styles.tapHint}>Tik om op kaart te tonen</Text> : null}
       <Text style={styles.coords}>
         Coords: {hotspot.lat.toFixed(5)}, {hotspot.lon.toFixed(5)}
       </Text>
-    </View>
+    </Pressable>
   );
 }
 
@@ -24,6 +31,20 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 14,
     gap: 6,
+  },
+  cardInteractive: {
+    shadowColor: "#4f657a",
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    elevation: 2,
+  },
+  cardPressed: {
+    transform: [{ scale: 0.99 }],
+    opacity: 0.95,
   },
   name: {
     fontSize: 17,
@@ -42,6 +63,10 @@ const styles = StyleSheet.create({
   metaText: {
     color: "#526a80",
     fontWeight: "500",
+  },
+  tapHint: {
+    color: "#1f6fb2",
+    fontWeight: "600",
   },
   coords: {
     color: "#7a8a99",
