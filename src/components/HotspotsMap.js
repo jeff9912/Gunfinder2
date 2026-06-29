@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef } from "react";
 import { StyleSheet, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
+import { colors } from "../styles/theme";
 
 const DEFAULT_NL_REGION = {
   latitude: 52.1326,
@@ -71,12 +72,13 @@ export default function HotspotsMap({ hotspots, userLocation, selectedHotspotId 
 
   return (
     <View style={[styles.wrapper, fullHeight ? styles.wrapperFullHeight : null]}>
-      <MapView ref={mapRef} style={styles.map} initialRegion={initialRegion}>
+      <MapView ref={mapRef} style={styles.map} initialRegion={initialRegion} showsUserLocation={false}>
         {userLocation ? (
           <Marker
             coordinate={{ latitude: userLocation.lat, longitude: userLocation.lon }}
             title="Jij bent hier"
-            pinColor="#1f6fb2"
+            description="Jouw huidige locatie"
+            pinColor={colors.primary}
           />
         ) : null}
 
@@ -86,7 +88,7 @@ export default function HotspotsMap({ hotspots, userLocation, selectedHotspotId 
             coordinate={{ latitude: hotspot.lat, longitude: hotspot.lon }}
             title={hotspot.name}
             description={hotspot.description}
-            pinColor={hotspot.id === selectedHotspotId ? "#f29d38" : "#c23a2b"}
+            pinColor={hotspot.id === selectedHotspotId ? colors.selected : colors.hotspot}
           />
         ))}
       </MapView>
@@ -101,8 +103,8 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     overflow: "hidden",
     borderWidth: 1,
-    borderColor: "#d8e0e8",
-    backgroundColor: "#ffffff",
+    borderColor: colors.border,
+    backgroundColor: colors.surface,
   },
   wrapperFullHeight: {
     flex: 1,

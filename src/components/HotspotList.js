@@ -1,7 +1,12 @@
 import { FlatList, StyleSheet, View } from "react-native";
+import { useSettings } from "../context/SettingsContext";
+import { getLayoutStyles } from "../styles/theme";
 import HotspotCard from "./HotspotCard";
 
 export default function HotspotList({ hotspots, onSelectHotspot }) {
+  const { layoutMode } = useSettings();
+  const layout = getLayoutStyles(layoutMode);
+
   return (
     <FlatList
       style={styles.list}
@@ -14,7 +19,7 @@ export default function HotspotList({ hotspots, onSelectHotspot }) {
         />
       )}
       contentContainerStyle={styles.content}
-      ItemSeparatorComponent={() => <View style={styles.separator} />}
+      ItemSeparatorComponent={() => <View style={{ height: layout.listSeparator }} />}
       showsVerticalScrollIndicator={false}
     />
   );
@@ -26,8 +31,5 @@ const styles = StyleSheet.create({
   },
   content: {
     paddingBottom: 24,
-  },
-  separator: {
-    height: 12,
   },
 });

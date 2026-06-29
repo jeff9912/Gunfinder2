@@ -1,16 +1,21 @@
 import { StatusBar } from "expo-status-bar";
 import { useCallback, useEffect, useState } from "react";
+import { Pressable, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { HotspotDataProvider } from "./src/context/HotspotDataContext";
+import { SettingsProvider } from "./src/context/SettingsContext";
 import HotspotsListScreen from "./src/screens/HotspotsListScreen";
 import MapScreen from "./src/screens/MapScreen";
+import SettingsScreen from "./src/screens/SettingsScreen";
 import { fetchHotspots } from "./src/services/hotspotsApi";
 import { getCurrentUserLocation } from "./src/services/locationService";
+import { colors } from "./src/styles/theme";
 
 const Stack = createStackNavigator();
 
-export default function App() {
+function AppNavigator() {
   const [hotspots, setHotspots] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
@@ -55,54 +60,78 @@ export default function App() {
   }, [loadUserLocation]);
 
   return (
-    <SafeAreaProvider>
-      <StatusBar style="dark" />
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="Lijst"
-          screenOptions={{
-            headerStyle: {
-              backgroundColor: "#eef4f9",
-            },
-            headerTintColor: "#0f2f4d",
-            headerTitleStyle: {
-              fontWeight: "700",
-            },
-            cardStyle: {
-              backgroundColor: "#eef4f9",
-            },
-          }}
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="Lijst"
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: colors.background,
+          },
+          headerTintColor: colors.text,
+          headerTitleStyle: {
+            fontWeight: "700",
+          },
+          cardStyle: {
+            backgroundColor: colors.background,
+          },
+        }}
+      >
+        <Stack.Screen
+          name="Lijst"
+          options={({ navigation }) => ({
+            title: "Hotspots",
+            headerRight: () => (
+              <Pressable onPress={() => navigation.navigate("Instellingen")} style={{ marginRight: 16 }}>
+                <Text style={{ color: colors.primary, fontWeight: "700" }}>Instellingen</Text>
+              </Pressable>
+            ),
+          })}
         >
-          <Stack.Screen name="Lijst" options={{ title: "Hotspots" }}>
-            {(screenProps) => (
-              <HotspotsListScreen
-                {...screenProps}
-                hotspots={hotspots}
-                isLoading={isLoading}
-                errorMessage={errorMessage}
-                onRetry={loadHotspots}
-                isGettingLocation={isGettingLocation}
-                locationErrorMessage={locationErrorMessage}
-              />
-            )}
-          </Stack.Screen>
+          {(screenProps) => (
+            <HotspotsListScreen
+              {...screenProps}
+              hotspots={hotspots}
+              isLoading={isLoading}
+              errorMessage={errorMessage}
+              onRetry={loadHotspots}
+              isGettingLocation={isGettingLocation}
+              locationErrorMessage={locationErrorMessage}
+            />
+          )}
+        </Stack.Screen>
 
-          <Stack.Screen name="Kaart" options={{ title: "Kaart" }}>
-            {(screenProps) => (
-              <MapScreen
-                {...screenProps}
-                hotspots={hotspots}
-                userLocation={userLocation}
-                isLoading={isLoading}
-                errorMessage={errorMessage}
-                onRetry={loadHotspots}
-                isGettingLocation={isGettingLocation}
-                locationErrorMessage={locationErrorMessage}
-              />
-            )}
-          </Stack.Screen>
-        </Stack.Navigator>
-      </NavigationContainer>
+        <Stack.Screen name="Kaart" options={{ title: "Kaart" }}>
+          {(screenProps) => (
+            <MapScreen
+              {...screenProps}
+              hotspots={hotspots}
+              userLocation={userLocation}
+              isLoading={isLoading}
+              errorMessage={errorMessage}
+              onRetry={loadHotspots}
+              isGettingLocation={isGettingLocation}
+              locationErrorMessage={locationErrorMessage}
+            />
+          )}
+        </Stack.Screen>
+
+        <Stack.Screen name="Instellingen" options={{ title: "Instellingen" }}>
+          {() => <SettingsScreen />}
+        </Stack.Screen>
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export default function App() {
+  return (
+    <SafeAreaProvider>
+      <SettingsProvider>
+        <HotspotDataProvider>
+          <StatusBar style="dark" />
+          <AppNavigator />
+        </HotspotDataProvider>
+      </SettingsProvider>
     </SafeAreaProvider>
   );
 }

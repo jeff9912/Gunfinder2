@@ -1,4 +1,5 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import { colors } from "../styles/theme";
 
 export function LoadingState() {
   return (
@@ -33,32 +34,32 @@ export function EmptyState() {
 const styles = StyleSheet.create({
   box: {
     width: "100%",
-    backgroundColor: "#fff",
+    backgroundColor: colors.surface,
     padding: 16,
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: "#d8e0e8",
+    borderColor: colors.border,
     gap: 8,
   },
   title: {
     fontSize: 18,
     fontWeight: "700",
-    color: "#0f2f4d",
+    color: colors.text,
   },
   subtitle: {
-    color: "#40556b",
+    color: colors.textSecondary,
     lineHeight: 20,
   },
   retryButton: {
     marginTop: 8,
     alignSelf: "flex-start",
-    backgroundColor: "#1f6fb2",
+    backgroundColor: colors.primary,
     borderRadius: 8,
     paddingVertical: 10,
     paddingHorizontal: 14,
   },
   retryButtonText: {
-    color: "#ffffff",
+    color: colors.surface,
     fontWeight: "600",
   },
 });

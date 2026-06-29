@@ -1,94 +1,267 @@
 import hotspotsBackup from "../data/hotspotsBackup.json";
+import { loadHotspotsCache, saveHotspotsCache } from "./storageService";
 
-const OVERPASS_API_URL =
-  "https://overpass-api.de/api/interpreter?data=%5Bout%3Ajson%5D%5Btimeout%3A60%5D%3B%0Aarea%5B%22name%22%3D%22Nederland%22%5D-%3E.searchArea%3B%0A%0A%28%0A%20%20nwr%5B%22sport%22%3D%22shooting%22%5D%28area.searchArea%29%3B%0A%20%20nwr%5B%22amenity%22%3D%22shooting_range%22%5D%28area.searchArea%29%3B%0A%29%3B%0A%0Aout%20center%3B";
-const MAX_RETRY_ATTEMPTS = 5;
-const RETRY_DELAY_MS = 1200;
-const RETRYABLE_STATUS_CODES = new Set([429, 500, 502, 503, 504]);
+const GOOGLE_PLACES_API_KEY = "AIzaSyD8_TAtznizlsGGPKPi5EYR9Nm1Y1XiXbI";
 
-function wait(ms) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
+// Text Search (New) endpoint — required because we're using textQuery +
+// a rectangle locationRestriction. searchNearby does NOT accept either of
+// those (it wants a circle and no free-text query).
+const TEXT_SEARCH_ENDPOINT = "https://places.googleapis.com/v1/places:searchText";
+
+// Netherlands bounding box: low = southwest corner, high = northeast corner
+const NL_VIEWPORT = {
+  low: { latitude: 50.75, longitude: 3.36 },
+  high: { latitude: 53.55, longitude: 7.23 },
+};
+
+// Run multiple queries since one search term won't catch every naming convention
+const SEARCH_QUERIES = [
+  "schietclub",
+  "schietsportvereniging",
+  "shooting range Nederland",
+];
+
+export const HotspotsApiErrorCode = {
+  NETWORK_ERROR: "HOTSPOTS_NETWORK_ERROR",
+  API_DISABLED: "HOTSPOTS_API_DISABLED",
+  API_UNAUTHORIZED: "HOTSPOTS_API_UNAUTHORIZED",
+  API_FORBIDDEN: "HOTSPOTS_API_FORBIDDEN",
+  API_BAD_REQUEST: "HOTSPOTS_API_BAD_REQUEST",
+  API_RATE_LIMITED: "HOTSPOTS_API_RATE_LIMITED",
+  API_SERVER_ERROR: "HOTSPOTS_API_SERVER_ERROR",
+  API_HTTP_ERROR: "HOTSPOTS_API_HTTP_ERROR",
+  PARSE_ERROR: "HOTSPOTS_PARSE_ERROR",
+  NO_RESULTS: "HOTSPOTS_NO_RESULTS",
+};
+
+export class HotspotsApiError extends Error {
+  constructor(code, message, details = {}) {
+    super(`[${code}] ${message}`);
+    this.name = "HotspotsApiError";
+    this.code = code;
+    this.details = details;
+  }
 }
 
-function mapElementToHotspot(element) {
-  const lat = element.lat ?? element.center?.lat ?? null;
-  const lon = element.lon ?? element.center?.lon ?? null;
-  const tags = element.tags ?? {};
-
+function mapPlaceToHotspot(place) {
   return {
-    id: `${element.type}-${element.id}`,
-    name: tags.name ?? "Onbekende hotspot",
-    description: tags.description ?? tags.note ?? "Geen extra beschrijving beschikbaar.",
-    city: tags["addr:city"] ?? "Onbekende plaats",
-    amenity: tags.amenity ?? "onbekend",
-    sport: tags.sport ?? "onbekend",
-    lat,
-    lon,
-    sourceType: element.type,
+    id: place.id,
+    name: place.displayName?.text ?? "Onbekende hotspot",
+    description: place.formattedAddress ?? "Geen extra beschrijving beschikbaar.",
+    city: place.formattedAddress ?? "Onbekende plaats",
+    amenity: "shooting_range",
+    sport: "shooting",
+    lat: place.location?.latitude ?? null,
+    lon: place.location?.longitude ?? null,
+    sourceType: "google_places",
   };
 }
 
-function normalizeElements(elements) {
-  return elements
-    .map(mapElementToHotspot)
-    .filter((hotspot) => hotspot.lat !== null && hotspot.lon !== null);
+function mapBackupElementToHotspot(element) {
+  const tags = element.tags ?? {};
+  const name = tags.name ?? tags.short_name ?? `Hotspot ${element.id}`;
+  const descriptionParts = [tags.leisure, tags.amenity, tags.website].filter(Boolean);
+
+  return {
+    id: String(element.id),
+    name,
+    description:
+      descriptionParts.length > 0
+        ? descriptionParts.join(" • ")
+        : "Lokale offline hotspot uit het backup-bestand.",
+    city: tags["addr:city"] ?? tags["addr:place"] ?? "Onbekende plaats",
+    amenity: tags.amenity ?? tags.leisure ?? "shooting_range",
+    sport: tags.sport ?? "shooting",
+    lat: element.lat ?? null,
+    lon: element.lon ?? null,
+    sourceType: "local_backup",
+  };
 }
 
-async function fetchHotspotsFromRemote() {
-  let lastErrorMessage = "";
+function normalizeHotspots(hotspots) {
+  return hotspots.filter((hotspot) => hotspot.lat !== null && hotspot.lon !== null);
+}
 
-  for (let attempt = 1; attempt <= MAX_RETRY_ATTEMPTS; attempt += 1) {
-    let response;
+function getOfflineHotspots() {
+  const backupElements = Array.isArray(hotspotsBackup?.elements) ? hotspotsBackup.elements : [];
 
-    try {
-      response = await fetch(OVERPASS_API_URL, {
-        headers: {
-          Accept: "application/json",
-        },
-      });
-    } catch (networkError) {
-      lastErrorMessage = networkError.message ?? "Netwerkfout bij ophalen van hotspots.";
+  return normalizeHotspots(
+    backupElements
+      .filter((element) => element?.type === "node" && element?.tags?.sport === "shooting")
+      .map(mapBackupElementToHotspot)
+  );
+}
 
-      if (attempt < MAX_RETRY_ATTEMPTS) {
-        await wait(RETRY_DELAY_MS * attempt);
-        continue;
-      }
-
-      throw new Error(lastErrorMessage);
-    }
-
-    if (response.ok) {
-      const json = await response.json();
-      const elements = Array.isArray(json.elements) ? json.elements : [];
-      return normalizeElements(elements);
-    }
-
-    lastErrorMessage = `Hotspot API fout (${response.status}).`;
-
-    if (RETRYABLE_STATUS_CODES.has(response.status) && attempt < MAX_RETRY_ATTEMPTS) {
-      await wait(RETRY_DELAY_MS * attempt);
-      continue;
-    }
-
-    throw new Error(lastErrorMessage);
+function getGoogleErrorReason(errorBody) {
+  const details = errorBody?.error?.details;
+  if (!Array.isArray(details)) {
+    return null;
   }
 
-  throw new Error(lastErrorMessage || "Kon hotspots niet ophalen van de server.");
+  const errorInfo = details.find(
+    (detail) => detail["@type"] === "type.googleapis.com/google.rpc.ErrorInfo"
+  );
+  return errorInfo?.reason ?? null;
+}
+
+function createHttpError(status, errorBody, textQuery) {
+  const googleStatus = errorBody?.error?.status ?? null;
+  const googleReason = getGoogleErrorReason(errorBody);
+  const googleMessage = errorBody?.error?.message ?? null;
+  const baseDetails = { httpStatus: status, googleStatus, googleReason, textQuery };
+
+  if (status === 400) {
+    return new HotspotsApiError(
+      HotspotsApiErrorCode.API_BAD_REQUEST,
+      googleMessage ?? "Ongeldige zoekopdracht naar Google Places.",
+      baseDetails
+    );
+  }
+
+  if (status === 401 || googleReason === "API_KEY_INVALID") {
+    return new HotspotsApiError(
+      HotspotsApiErrorCode.API_UNAUTHORIZED,
+      "Google Places API-sleutel is ongeldig of ontbreekt.",
+      baseDetails
+    );
+  }
+
+  if (googleReason === "SERVICE_DISABLED") {
+    return new HotspotsApiError(
+      HotspotsApiErrorCode.API_DISABLED,
+      "Places API (New) is niet ingeschakeld in het Google Cloud-project. Schakel de API in en wacht een paar minuten.",
+      baseDetails
+    );
+  }
+
+  if (status === 403) {
+    return new HotspotsApiError(
+      HotspotsApiErrorCode.API_FORBIDDEN,
+      googleMessage ?? "Geen toegang tot Google Places API.",
+      baseDetails
+    );
+  }
+
+  if (status === 429) {
+    return new HotspotsApiError(
+      HotspotsApiErrorCode.API_RATE_LIMITED,
+      "Te veel verzoeken aan Google Places. Probeer het later opnieuw.",
+      baseDetails
+    );
+  }
+
+  if (status >= 500) {
+    return new HotspotsApiError(
+      HotspotsApiErrorCode.API_SERVER_ERROR,
+      "Google Places API is tijdelijk niet bereikbaar.",
+      baseDetails
+    );
+  }
+
+  return new HotspotsApiError(
+    HotspotsApiErrorCode.API_HTTP_ERROR,
+    googleMessage ?? `Google Places API gaf HTTP ${status}.`,
+    baseDetails
+  );
+}
+
+async function parseErrorResponse(response, textQuery) {
+  const rawBody = await response.text();
+
+  try {
+    return createHttpError(response.status, JSON.parse(rawBody), textQuery);
+  } catch {
+    return createHttpError(response.status, null, textQuery);
+  }
+}
+
+async function searchOneQuery(textQuery) {
+  let response;
+
+  try {
+    response = await fetch(TEXT_SEARCH_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Goog-Api-Key": GOOGLE_PLACES_API_KEY,
+        "X-Goog-FieldMask": "places.id,places.displayName,places.formattedAddress,places.location",
+      },
+      body: JSON.stringify({
+        textQuery,
+        locationRestriction: { rectangle: NL_VIEWPORT },
+        pageSize: 20,
+      }),
+    });
+  } catch (error) {
+    throw new HotspotsApiError(
+      HotspotsApiErrorCode.NETWORK_ERROR,
+      "Kon geen verbinding maken met Google Places. Controleer je internetverbinding.",
+      { cause: error?.message, textQuery }
+    );
+  }
+
+  if (!response.ok) {
+    throw await parseErrorResponse(response, textQuery);
+  }
+
+  let json;
+
+  try {
+    json = await response.json();
+  } catch (error) {
+    throw new HotspotsApiError(
+      HotspotsApiErrorCode.PARSE_ERROR,
+      "Antwoord van Google Places kon niet worden gelezen.",
+      { cause: error?.message, textQuery }
+    );
+  }
+
+  return Array.isArray(json.places) ? json.places : [];
 }
 
 export async function fetchHotspots() {
   try {
-    return await fetchHotspotsFromRemote();
-  } catch (error) {
-    const backupElements = Array.isArray(hotspotsBackup.elements) ? hotspotsBackup.elements : [];
+    // Run all queries; if one fails, that failure surfaces immediately.
+    // Use Promise.allSettled instead if partial results should be tolerated.
+    const allPlacesArrays = await Promise.all(SEARCH_QUERIES.map(searchOneQuery));
+    const merged = allPlacesArrays.flat();
 
-    if (backupElements.length > 0) {
-      console.warn("Hotspots API tijdelijk onbereikbaar, fallback naar lokale backupdata.", error.message);
-      return normalizeElements(backupElements);
+    // De-duplicate by place id, since multiple queries will overlap
+    const uniqueById = Array.from(
+      new Map(merged.map((place) => [place.id, place])).values()
+    );
+
+    const hotspots = normalizeHotspots(uniqueById.map(mapPlaceToHotspot));
+
+    if (hotspots.length === 0) {
+      throw new HotspotsApiError(
+        HotspotsApiErrorCode.NO_RESULTS,
+        "Geen hotspots gevonden via Google Places.",
+        { queries: SEARCH_QUERIES }
+      );
     }
 
-    throw new Error(error.message ?? "Kon hotspots niet ophalen van de server.");
+    await saveHotspotsCache(hotspots);
+    return hotspots;
+  } catch (error) {
+    if (error?.code !== HotspotsApiErrorCode.NETWORK_ERROR) {
+      throw error;
+    }
+
+    const cachedHotspots = await loadHotspotsCache();
+    if (Array.isArray(cachedHotspots) && cachedHotspots.length > 0) {
+      return normalizeHotspots(cachedHotspots);
+    }
+
+    const offlineHotspots = getOfflineHotspots();
+    if (offlineHotspots.length > 0) {
+      return offlineHotspots;
+    }
+
+    throw new HotspotsApiError(
+      HotspotsApiErrorCode.NETWORK_ERROR,
+      "Geen internetverbinding en geen lokale hotspots-cache beschikbaar.",
+      { fallbackSources: ["cache", "backup-json"] }
+    );
   }
 }

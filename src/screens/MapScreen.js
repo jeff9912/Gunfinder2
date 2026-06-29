@@ -1,7 +1,10 @@
-import { StyleSheet, Text, View } from "react-native";
+import { useMemo } from "react";
+import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import HotspotsMap from "../components/HotspotsMap";
 import { EmptyState, ErrorState, LoadingState } from "../components/ScreenState";
+import { useSettings } from "../context/SettingsContext";
+import { createScreenStyles } from "../styles/theme";
 
 export default function MapScreen({
   route,
@@ -13,23 +16,25 @@ export default function MapScreen({
   isGettingLocation,
   locationErrorMessage,
 }) {
+  const { layoutMode } = useSettings();
+  const screenStyles = useMemo(() => createScreenStyles(layoutMode), [layoutMode]);
   const selectedHotspotId = route.params?.hotspotId ?? null;
   const selectedHotspotName = route.params?.hotspotName ?? "";
 
   return (
-    <SafeAreaView style={styles.safeArea} edges={["bottom"]}>
-      <View style={styles.container}>
-        <Text style={styles.title}>Hotspot kaart</Text>
+    <SafeAreaView style={screenStyles.safeArea} edges={["bottom"]}>
+      <View style={screenStyles.container}>
+        <Text style={screenStyles.title}>Hotspot kaart</Text>
 
         {selectedHotspotId ? (
-          <Text style={styles.subtitle}>Ingezoomd op: {selectedHotspotName || "geselecteerde hotspot"}</Text>
+          <Text style={screenStyles.subtitle}>Ingezoomd op: {selectedHotspotName || "geselecteerde hotspot"}</Text>
         ) : (
-          <Text style={styles.subtitle}>Alle hotspots en jouw huidige locatie</Text>
+          <Text style={screenStyles.subtitle}>Alle hotspots en jouw huidige locatie</Text>
         )}
 
-        {isGettingLocation ? <Text style={styles.infoText}>Huidige locatie wordt opgehaald...</Text> : null}
+        {isGettingLocation ? <Text style={screenStyles.infoText}>Huidige locatie wordt opgehaald...</Text> : null}
         {!isGettingLocation && locationErrorMessage ? (
-          <Text style={styles.warningText}>{locationErrorMessage}</Text>
+          <Text style={screenStyles.warningText}>{locationErrorMessage}</Text>
         ) : null}
 
         {isLoading ? <LoadingState /> : null}
@@ -48,34 +53,3 @@ export default function MapScreen({
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: "#eef4f9",
-  },
-  container: {
-    flex: 1,
-    paddingHorizontal: 16,
-    paddingTop: 12,
-    paddingBottom: 12,
-    gap: 12,
-  },
-  title: {
-    fontSize: 26,
-    fontWeight: "800",
-    color: "#0f2f4d",
-  },
-  subtitle: {
-    color: "#40556b",
-    lineHeight: 20,
-  },
-  infoText: {
-    color: "#40556b",
-    fontWeight: "500",
-  },
-  warningText: {
-    color: "#b24335",
-    fontWeight: "600",
-  },
-});

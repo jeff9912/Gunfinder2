@@ -1,7 +1,11 @@
+import { useMemo, useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import HotspotList from "../components/HotspotList";
 import { EmptyState, ErrorState, LoadingState } from "../components/ScreenState";
+import { useHotspotData } from "../context/HotspotDataContext";
+import { useSettings } from "../context/SettingsContext";
+import { createScreenStyles } from "../styles/theme";
 
 export default function HotspotsListScreen({
   navigation,
@@ -12,6 +16,18 @@ export default function HotspotsListScreen({
   isGettingLocation,
   locationErrorMessage,
 }) {
+  const { layoutMode } = useSettings();
+  const { isFavorite } = useHotspotData();
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+  const screenStyles = useMemo(() => createScreenStyles(layoutMode), [layoutMode]);
+
+  const visibleHotspots = useMemo(() => {
+    if (!showFavoritesOnly) {
+      return hotspots;
+    }
+    return hotspots.filter((hotspot) => isFavorite(hotspot.id));
+  }, [hotspots, showFavoritesOnly, isFavorite]);
+
   const handleSelectHotspot = (hotspot) => {
     navigation.navigate("Kaart", {
       hotspotId: hotspot.id,
@@ -20,20 +36,30 @@ export default function HotspotsListScreen({
   };
 
   return (
-    <SafeAreaView style={styles.safeArea} edges={["bottom"]}>
-      <View style={styles.container}>
-        <Text style={styles.title}>Shooting ranges in Nederland</Text>
-        <Text style={styles.subtitle}>Selecteer een hotspot om op de kaart in te zoomen.</Text>
+    <SafeAreaView style={screenStyles.safeArea} edges={["bottom"]}>
+      <View style={screenStyles.container}>
+        <Text style={screenStyles.title}>Shooting ranges in Nederland</Text>
+        <Text style={screenStyles.subtitle}>Selecteer een hotspot om op de kaart in te zoomen.</Text>
 
-        {isGettingLocation ? <Text style={styles.infoText}>Huidige locatie wordt opgehaald...</Text> : null}
+        {isGettingLocation ? <Text style={screenStyles.infoText}>Huidige locatie wordt opgehaald...</Text> : null}
         {!isGettingLocation && locationErrorMessage ? (
-          <Text style={styles.warningText}>{locationErrorMessage}</Text>
+          <Text style={screenStyles.warningText}>{locationErrorMessage}</Text>
         ) : null}
 
         {!isLoading && !errorMessage && hotspots.length > 0 ? (
-          <Pressable style={styles.mapButton} onPress={() => navigation.navigate("Kaart")}>
-            <Text style={styles.mapButtonText}>Open kaart met alle hotspots</Text>
-          </Pressable>
+          <View style={styles.toolbar}>
+            <Pressable style={screenStyles.primaryButton} onPress={() => navigation.navigate("Kaart")}>
+              <Text style={screenStyles.primaryButtonText}>Open kaart met alle hotspots</Text>
+            </Pressable>
+            <Pressable
+              style={[styles.filterButton, showFavoritesOnly ? styles.filterButtonActive : null]}
+              onPress={() => setShowFavoritesOnly((current) => !current)}
+            >
+              <Text style={[styles.filterButtonText, showFavoritesOnly ? styles.filterButtonTextActive : null]}>
+                {showFavoritesOnly ? "Toon alle" : "Alleen favorieten"}
+              </Text>
+            </Pressable>
+          </View>
         ) : null}
 
         {isLoading ? <LoadingState /> : null}
@@ -42,8 +68,14 @@ export default function HotspotsListScreen({
 
         {!isLoading && !errorMessage && hotspots.length === 0 ? <EmptyState /> : null}
 
-        {!isLoading && !errorMessage && hotspots.length > 0 ? (
-          <HotspotList hotspots={hotspots} onSelectHotspot={handleSelectHotspot} />
+        {!isLoading && !errorMessage && hotspots.length > 0 && visibleHotspots.length === 0 ? (
+          <View style={styles.emptyFavorites}>
+            <Text style={screenStyles.subtitle}>Je hebt nog geen favorieten. Markeer hotspots met de ster.</Text>
+          </View>
+        ) : null}
+
+        {!isLoading && !errorMessage && visibleHotspots.length > 0 ? (
+          <HotspotList hotspots={visibleHotspots} onSelectHotspot={handleSelectHotspot} />
         ) : null}
       </View>
     </SafeAreaView>
@@ -51,42 +83,36 @@ export default function HotspotsListScreen({
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: "#eef4f9",
+  toolbar: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 8,
+    alignItems: "center",
   },
-  container: {
-    flex: 1,
-    paddingHorizontal: 16,
-    paddingTop: 12,
-    gap: 12,
-  },
-  title: {
-    fontSize: 26,
-    fontWeight: "800",
-    color: "#0f2f4d",
-  },
-  subtitle: {
-    color: "#40556b",
-    lineHeight: 20,
-  },
-  infoText: {
-    color: "#40556b",
-    fontWeight: "500",
-  },
-  warningText: {
-    color: "#b24335",
-    fontWeight: "600",
-  },
-  mapButton: {
-    alignSelf: "flex-start",
-    backgroundColor: "#1f6fb2",
+  filterButton: {
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 14,
+    borderWidth: 1,
+    borderColor: "#d8e0e8",
+    backgroundColor: "#ffffff",
   },
-  mapButtonText: {
-    color: "#ffffff",
-    fontWeight: "700",
+  filterButtonActive: {
+    borderColor: "#e8a317",
+    backgroundColor: "#fff8e8",
+  },
+  filterButtonText: {
+    fontWeight: "600",
+    color: "#40556b",
+  },
+  filterButtonTextActive: {
+    color: "#b07d00",
+  },
+  emptyFavorites: {
+    padding: 16,
+    backgroundColor: "#ffffff",
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "#d8e0e8",
   },
 });
