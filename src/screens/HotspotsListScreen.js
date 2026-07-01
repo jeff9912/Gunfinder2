@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Compass from "../components/Compass";
 import HotspotList from "../components/HotspotList";
 import { EmptyState, ErrorState, LoadingState } from "../components/ScreenState";
 import { useHotspotData } from "../context/HotspotDataContext";
@@ -15,6 +16,7 @@ export default function HotspotsListScreen({
   onRetry,
   isGettingLocation,
   locationErrorMessage,
+  heading,
 }) {
   const { layoutMode } = useSettings();
   const { isFavorite } = useHotspotData();
@@ -40,6 +42,8 @@ export default function HotspotsListScreen({
       <View style={screenStyles.container}>
         <Text style={screenStyles.title}>Shooting ranges in Nederland</Text>
         <Text style={screenStyles.subtitle}>Selecteer een hotspot om op de kaart in te zoomen.</Text>
+
+        <Compass heading={heading} />
 
         {isGettingLocation ? <Text style={screenStyles.infoText}>Huidige locatie wordt opgehaald...</Text> : null}
         {!isGettingLocation && locationErrorMessage ? (

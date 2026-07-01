@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+import * as Location from "expo-location";
 import { useCallback, useEffect, useState } from "react";
 import { Pressable, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -21,6 +22,7 @@ function AppNavigator() {
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
   const [userLocation, setUserLocation] = useState(null);
+  const [heading, setHeading] = useState(0);
   const [isGettingLocation, setIsGettingLocation] = useState(true);
   const [locationErrorMessage, setLocationErrorMessage] = useState("");
 
@@ -74,6 +76,27 @@ function AppNavigator() {
     loadUserLocation();
   }, [loadUserLocation]);
 
+  useEffect(() => {
+    let subscription = null;
+
+    async function startHeadingUpdates() {
+      try {
+        subscription = await Location.watchHeadingAsync((value) => {
+          const nextHeading = value.trueHeading >= 0 ? value.trueHeading : value.magHeading ?? 0;
+          setHeading(Math.round(nextHeading));
+        });
+      } catch {
+        setHeading(0);
+      }
+    }
+
+    startHeadingUpdates();
+
+    return () => {
+      subscription?.remove?.();
+    };
+  }, []);
+
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -111,6 +134,7 @@ function AppNavigator() {
               onRetry={loadHotspots}
               isGettingLocation={isGettingLocation}
               locationErrorMessage={locationErrorMessage}
+              heading={heading}
             />
           )}
         </Stack.Screen>
