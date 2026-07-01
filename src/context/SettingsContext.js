@@ -6,7 +6,6 @@ const SettingsContext = createContext(null);
 
 export function SettingsProvider({ children }) {
   const [layoutMode, setLayoutModeState] = useState(layoutModes.COMFORTABLE);
-  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -15,9 +14,6 @@ export function SettingsProvider({ children }) {
       const savedMode = await loadLayoutMode();
       if (isMounted && Object.values(layoutModes).includes(savedMode)) {
         setLayoutModeState(savedMode);
-      }
-      if (isMounted) {
-        setIsReady(true);
       }
     }
 
@@ -37,9 +33,8 @@ export function SettingsProvider({ children }) {
     () => ({
       layoutMode,
       setLayoutMode,
-      isReady,
     }),
-    [layoutMode, setLayoutMode, isReady],
+    [layoutMode, setLayoutMode],
   );
 
   return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>;

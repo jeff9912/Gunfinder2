@@ -3,7 +3,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const STORAGE_KEYS = {
   LAYOUT_MODE: "@hotspots/layoutMode",
   FAVORITES: "@hotspots/favorites",
-  LIKES: "@hotspots/likes",
   NOTES: "@hotspots/notes",
   HOTSPOTS_CACHE: "@hotspots/cache",
 };
@@ -38,14 +37,6 @@ export async function loadFavorites() {
 
 export async function saveFavorites(favorites) {
   await saveJson(STORAGE_KEYS.FAVORITES, favorites);
-}
-
-export async function loadLikes() {
-  return loadJson(STORAGE_KEYS.LIKES, []);
-}
-
-export async function saveLikes(likes) {
-  await saveJson(STORAGE_KEYS.LIKES, likes);
 }
 
 export async function loadNotes() {

@@ -10,6 +10,7 @@ import HotspotsListScreen from "./src/screens/HotspotsListScreen";
 import MapScreen from "./src/screens/MapScreen";
 import SettingsScreen from "./src/screens/SettingsScreen";
 import { fetchHotspots } from "./src/services/hotspotsApi";
+import { loadHotspotsCache } from "./src/services/storageService";
 import { getCurrentUserLocation } from "./src/services/locationService";
 import { colors } from "./src/styles/theme";
 
@@ -27,13 +28,27 @@ function AppNavigator() {
     setIsLoading(true);
     setErrorMessage("");
 
+    const cachedHotspots = await loadHotspotsCache();
+    const hasCachedHotspots = Array.isArray(cachedHotspots) && cachedHotspots.length > 0;
+
+    if (hasCachedHotspots) {
+      setHotspots(cachedHotspots);
+      setIsLoading(false);
+    }
+
     try {
       const data = await fetchHotspots();
       setHotspots(data);
     } catch (error) {
+      if (hasCachedHotspots) {
+        return;
+      }
+
       setErrorMessage(error.message ?? "Onbekende fout bij het ophalen van hotspots.");
     } finally {
-      setIsLoading(false);
+      if (!hasCachedHotspots) {
+        setIsLoading(false);
+      }
     }
   }, []);
 

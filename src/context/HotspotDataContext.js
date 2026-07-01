@@ -1,39 +1,24 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import {
-  loadFavorites,
-  loadLikes,
-  loadNotes,
-  saveFavorites,
-  saveLikes,
-  saveNotes,
-} from "../services/storageService";
+import { loadFavorites, loadNotes, saveFavorites, saveNotes } from "../services/storageService";
 
 const HotspotDataContext = createContext(null);
 
 export function HotspotDataProvider({ children }) {
   const [favorites, setFavorites] = useState([]);
-  const [likes, setLikes] = useState([]);
   const [notes, setNotes] = useState({});
-  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
 
     async function hydrate() {
-      const [savedFavorites, savedLikes, savedNotes] = await Promise.all([
-        loadFavorites(),
-        loadLikes(),
-        loadNotes(),
-      ]);
+      const [savedFavorites, savedNotes] = await Promise.all([loadFavorites(), loadNotes()]);
 
       if (!isMounted) {
         return;
       }
 
       setFavorites(Array.isArray(savedFavorites) ? savedFavorites : []);
-      setLikes(Array.isArray(savedLikes) ? savedLikes : []);
       setNotes(savedNotes && typeof savedNotes === "object" ? savedNotes : {});
-      setIsReady(true);
     }
 
     hydrate();
@@ -43,7 +28,7 @@ export function HotspotDataProvider({ children }) {
     };
   }, []);
 
-  const toggleFavorite = useCallback(async (hotspotId) => {
+  const toggleFavorite = useCallback((hotspotId) => {
     setFavorites((current) => {
       const next = current.includes(hotspotId)
         ? current.filter((id) => id !== hotspotId)
@@ -53,17 +38,7 @@ export function HotspotDataProvider({ children }) {
     });
   }, []);
 
-  const toggleLike = useCallback(async (hotspotId) => {
-    setLikes((current) => {
-      const next = current.includes(hotspotId)
-        ? current.filter((id) => id !== hotspotId)
-        : [...current, hotspotId];
-      saveLikes(next);
-      return next;
-    });
-  }, []);
-
-  const setNote = useCallback(async (hotspotId, text) => {
+  const setNote = useCallback((hotspotId, text) => {
     setNotes((current) => {
       const trimmed = text.trim();
       const next = { ...current };
@@ -80,23 +55,18 @@ export function HotspotDataProvider({ children }) {
   }, []);
 
   const isFavorite = useCallback((hotspotId) => favorites.includes(hotspotId), [favorites]);
-  const isLiked = useCallback((hotspotId) => likes.includes(hotspotId), [likes]);
   const getNote = useCallback((hotspotId) => notes[hotspotId] ?? "", [notes]);
 
   const value = useMemo(
     () => ({
       favorites,
-      likes,
       notes,
-      isReady,
       toggleFavorite,
-      toggleLike,
       setNote,
       isFavorite,
-      isLiked,
       getNote,
     }),
-    [favorites, likes, notes, isReady, toggleFavorite, toggleLike, setNote, isFavorite, isLiked, getNote],
+    [favorites, notes, toggleFavorite, setNote, isFavorite, getNote],
   );
 
   return <HotspotDataContext.Provider value={value}>{children}</HotspotDataContext.Provider>;

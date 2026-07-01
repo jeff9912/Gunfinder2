@@ -2,26 +2,20 @@ import hotspotsBackup from "../data/hotspotsBackup.json";
 import { loadHotspotsCache, saveHotspotsCache } from "./storageService";
 
 const GOOGLE_PLACES_API_KEY = "AIzaSyD8_TAtznizlsGGPKPi5EYR9Nm1Y1XiXbI";
-
-// Text Search (New) endpoint — required because we're using textQuery +
-// a rectangle locationRestriction. searchNearby does NOT accept either of
-// those (it wants a circle and no free-text query).
 const TEXT_SEARCH_ENDPOINT = "https://places.googleapis.com/v1/places:searchText";
 
-// Netherlands bounding box: low = southwest corner, high = northeast corner
 const NL_VIEWPORT = {
   low: { latitude: 50.75, longitude: 3.36 },
   high: { latitude: 53.55, longitude: 7.23 },
 };
 
-// Run multiple queries since one search term won't catch every naming convention
 const SEARCH_QUERIES = [
   "schietclub",
   "schietsportvereniging",
   "shooting range Nederland",
 ];
 
-export const HotspotsApiErrorCode = {
+const HotspotsApiErrorCode = {
   NETWORK_ERROR: "HOTSPOTS_NETWORK_ERROR",
   API_DISABLED: "HOTSPOTS_API_DISABLED",
   API_UNAUTHORIZED: "HOTSPOTS_API_UNAUTHORIZED",
@@ -34,7 +28,7 @@ export const HotspotsApiErrorCode = {
   NO_RESULTS: "HOTSPOTS_NO_RESULTS",
 };
 
-export class HotspotsApiError extends Error {
+class HotspotsApiError extends Error {
   constructor(code, message, details = {}) {
     super(`[${code}] ${message}`);
     this.name = "HotspotsApiError";
@@ -53,7 +47,6 @@ function mapPlaceToHotspot(place) {
     sport: "shooting",
     lat: place.location?.latitude ?? null,
     lon: place.location?.longitude ?? null,
-    sourceType: "google_places",
   };
 }
 
@@ -74,7 +67,6 @@ function mapBackupElementToHotspot(element) {
     sport: tags.sport ?? "shooting",
     lat: element.lat ?? null,
     lon: element.lon ?? null,
-    sourceType: "local_backup",
   };
 }
 
@@ -221,12 +213,9 @@ async function searchOneQuery(textQuery) {
 
 export async function fetchHotspots() {
   try {
-    // Run all queries; if one fails, that failure surfaces immediately.
-    // Use Promise.allSettled instead if partial results should be tolerated.
     const allPlacesArrays = await Promise.all(SEARCH_QUERIES.map(searchOneQuery));
     const merged = allPlacesArrays.flat();
 
-    // De-duplicate by place id, since multiple queries will overlap
     const uniqueById = Array.from(
       new Map(merged.map((place) => [place.id, place])).values()
     );
@@ -244,13 +233,13 @@ export async function fetchHotspots() {
     await saveHotspotsCache(hotspots);
     return hotspots;
   } catch (error) {
-    if (error?.code !== HotspotsApiErrorCode.NETWORK_ERROR) {
-      throw error;
-    }
-
     const cachedHotspots = await loadHotspotsCache();
     if (Array.isArray(cachedHotspots) && cachedHotspots.length > 0) {
       return normalizeHotspots(cachedHotspots);
+    }
+
+    if (error?.code !== HotspotsApiErrorCode.NETWORK_ERROR) {
+      throw error;
     }
 
     const offlineHotspots = getOfflineHotspots();

@@ -3,19 +3,17 @@ import { useHotspotData } from "../context/HotspotDataContext";
 import { useSettings } from "../context/SettingsContext";
 import { colors, getLayoutStyles, layoutModes } from "../styles/theme";
 import FavoriteButton from "./FavoriteButton";
-import LikeButton from "./LikeButton";
 import NoteEditor from "./NoteEditor";
 
 export default function HotspotCard({ hotspot, onPress }) {
   const { layoutMode } = useSettings();
-  const { isFavorite, isLiked, getNote, toggleFavorite, toggleLike, setNote } = useHotspotData();
+  const { isFavorite, getNote, toggleFavorite, setNote } = useHotspotData();
   const layout = getLayoutStyles(layoutMode);
   const isInteractive = typeof onPress === "function";
   const isCompact = layoutMode === layoutModes.COMPACT;
   const isDetailed = layoutMode === layoutModes.DETAILED;
 
   const favorite = isFavorite(hotspot.id);
-  const liked = isLiked(hotspot.id);
   const note = getNote(hotspot.id);
 
   return (
@@ -40,7 +38,6 @@ export default function HotspotCard({ hotspot, onPress }) {
             onPress={() => toggleFavorite(hotspot.id)}
             compact={isCompact}
           />
-          <LikeButton isActive={liked} onPress={() => toggleLike(hotspot.id)} compact={isCompact} />
         </View>
       </View>
 

@@ -2,7 +2,6 @@ export const colors = {
   background: "#eef4f9",
   surface: "#ffffff",
   primary: "#1f6fb2",
-  primaryDark: "#0f2f4d",
   text: "#0f2f4d",
   textSecondary: "#40556b",
   textMuted: "#7a8a99",
@@ -114,6 +113,5 @@ export function createScreenStyles(layoutMode) {
       fontWeight: "700",
       fontSize: layout.bodySize,
     },
-    layout,
   };
 }
