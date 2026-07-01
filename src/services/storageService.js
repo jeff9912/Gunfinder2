@@ -54,3 +54,7 @@ export async function loadHotspotsCache() {
 export async function saveHotspotsCache(hotspots) {
   await saveJson(STORAGE_KEYS.HOTSPOTS_CACHE, hotspots);
 }
+
+export async function clearHotspotsCache() {
+  await AsyncStorage.removeItem(STORAGE_KEYS.HOTSPOTS_CACHE);
+}

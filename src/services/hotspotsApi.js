@@ -16,7 +16,7 @@ const SEARCH_QUERIES = [
 ];
 
 const HotspotsApiErrorCode = {
-  NETWORK_ERROR: "HOTSPOTS_NETWORK_ERROR",
+  NO_INTERNET: "NO_INTERNET",
   API_DISABLED: "HOTSPOTS_API_DISABLED",
   API_UNAUTHORIZED: "HOTSPOTS_API_UNAUTHORIZED",
   API_FORBIDDEN: "HOTSPOTS_API_FORBIDDEN",
@@ -186,8 +186,8 @@ async function searchOneQuery(textQuery) {
     });
   } catch (error) {
     throw new HotspotsApiError(
-      HotspotsApiErrorCode.NETWORK_ERROR,
-      "Kon geen verbinding maken met Google Places. Controleer je internetverbinding.",
+      HotspotsApiErrorCode.NO_INTERNET,
+      "Geen internetverbinding.",
       { cause: error?.message, textQuery }
     );
   }
@@ -238,7 +238,7 @@ export async function fetchHotspots() {
       return normalizeHotspots(cachedHotspots);
     }
 
-    if (error?.code !== HotspotsApiErrorCode.NETWORK_ERROR) {
+    if (error?.code !== HotspotsApiErrorCode.NO_INTERNET) {
       throw error;
     }
 
@@ -248,8 +248,8 @@ export async function fetchHotspots() {
     }
 
     throw new HotspotsApiError(
-      HotspotsApiErrorCode.NETWORK_ERROR,
-      "Geen internetverbinding en geen lokale hotspots-cache beschikbaar.",
+      HotspotsApiErrorCode.NO_INTERNET,
+      "Geen internet en geen cache.",
       { fallbackSources: ["cache", "backup-json"] }
     );
   }
